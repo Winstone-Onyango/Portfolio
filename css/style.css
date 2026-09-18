@@ -633,20 +633,19 @@ section:last-of-type  { border-bottom: none; }
   border-color: var(--accent-1);
 }
 
-/* Certificate image area */
+/* Certificate image area — image fills the card edge-to-edge, fully responsive */
 .cert-media {
-  position: relative; height: 200px; overflow: hidden;
+  position: relative; aspect-ratio: 3 / 2; overflow: hidden;
   background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border);
   display: flex; align-items: center; justify-content: center;
 }
 .cert-media img {
   position: relative; z-index: 2; width: 100%; height: 100%;
-  /* certificate scans are usually landscape — show the whole document */
-  object-fit: contain; object-position: center; display: block;
-  padding: 10px;
+  /* fill the whole media area — no letterboxing, no gaps */
+  object-fit: cover; object-position: center; display: block;
   transition: transform .45s cubic-bezier(.22,1,.36,1);
 }
-.cert-card:hover .cert-media img { transform: scale(1.04); }
+.cert-card:hover .cert-media img { transform: scale(1.05); }
 .cert-media-placeholder {
   position: absolute; inset: 0; z-index: 1;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
@@ -699,7 +698,8 @@ section:last-of-type  { border-bottom: none; }
   background: var(--color-bg-panel); border: 1px solid var(--color-border);
   color: var(--color-cyan);
 }
-@media (max-width: 640px) { .cert-media { height: 170px; } }
+/* Mobile: keep the ratio instead of a fixed height so scans aren't over-cropped */
+@media (max-width: 640px) { .cert-media { aspect-ratio: 16 / 10; } }
 
 /* — Contact — */
 .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: start; }
