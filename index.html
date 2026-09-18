@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onyango Winstone — Telecommunication &amp; Information Engineer</title>
+  <meta name="description" content="Onyango Winstone Odhiambo — Telecommunication and Information Engineering graduate specializing in networks, SCADA systems, IoT and AI/ML. I build things that connect, power, and think.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Reading progress bar -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ====================== HEADER / NAV ====================== -->
+  <header class="site-header">
+    <div class="nav container">
+      <!-- Brand: left side, links to home -->
+      <a href="#home" class="nav-name" aria-label="Winstone — back to home">
+        <span class="nav-name-mark" aria-hidden="true">W</span>
+        <span class="nav-name-text">Winstone</span>
+      </a>
+
+      <div class="nav-right">
+        <!-- Horizontal navigation: upper right -->
+        <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+          <ul>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#certificates" class="nav-link">Certificates</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Theme dropdown -->
+        <div class="theme-select-wrap">
+          <span class="theme-select-icon" aria-hidden="true">&#x1F3A8;</span>
+          <select class="theme-select" id="theme-select" aria-label="Choose a colour theme">
+            <option value="system">System</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" type="button"
+                aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====================== HERO ====================== -->
+  <section class="hero" id="home">
+    <div class="hero-inner container">
+      <!-- Text column -->
+      <div class="hero-content">
+        <div class="hero-tag">Telecommunication &amp; Information Engineer</div>
+        <h1 class="hero-title">
+          <span class="hello">Hello, I am</span>
+          <span class="name-cyan">Onyango</span>
+          <span class="name-violet">Winstone.</span>
+        </h1>
+        <!-- Typewriter: cycling roles -->
+        <div class="typewriter">
+          <span class="typed-roles" id="typed-roles"></span>
+          <span class="cursor">|</span>
+        </div>
+        <p class="hero-lede">
+          I'm a Telecommunication and Information Engineer who enjoys building things
+          that challenge the way I think. My work spans software development,
+          AI/ML, robotics, embedded systems, and IoT — turning complex ideas
+          into practical solutions.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects →</a>
+          <a href="contact.html" class="btn btn-ghost">Let's Talk</a>
+          <a href="assets/Onyango_Winstone_Resume.pdf" class="btn btn-ghost" download>Download CV</a>
+        </div>
+        <div class="hero-links">
+          <a href="https://github.com/Winstone-Onyango" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/winstone-onyango/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:winstoneonyango76@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <!-- Photo column -->
+      <div class="hero-photo">
+        <div class="photo-halo" aria-hidden="true"></div>
+        <div class="photo-frame">
+          <!-- Drop your photo at assets/profile.jpg — it shows automatically.
+               Until then, the OW gradient avatar below is displayed. -->
+          <img src="assets/profile.jpg"
+               onerror="this.onerror=null;this.src='assets/profile-placeholder.svg';"
+               alt="Onyango Winstone" class="profile-img"
+               width="800" height="1000" fetchpriority="high">
+        </div>
+        <!-- Kept outside .photo-frame so the edge-fade mask doesn't dim it -->
+        <span class="photo-chip">Nairobi, KE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== ABOUT ====================== -->
+  <section id="about">
+    <div class="container">
+      <div class="eyebrow reveal">About</div>
+      <h2 class="section-title reveal">Engineering the link between hardware and intelligence</h2>
+      <p class="section-intro reveal">
+        Grounded in telecommunications, extending into software and AI — I like systems
+        where a signal, a line of code, and a piece of hardware all have to agree.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-copy reveal delay-1">
+          <p>
+            I’m a Telecommunication and Information Engineer who enjoys building things that
+            challenge the way I think. My interests span software development, AI/ML, robotics,
+            embedded systems, and IoT.
+          </p>
+          <p>
+            From writing code to working with hardware, I’m driven by curiosity and the
+            satisfaction of turning complex ideas into practical solutions. I may not know
+            everything yet, but I’m always willing to learn what it takes to build something
+            meaningful.
+          </p>
+          <p>
+            Currently exploring <strong>network automation</strong>, <strong>AI/ML model
+            development</strong>, and <strong>IoT-embedded systems</strong> while interning
+            across telecom infrastructure, enterprise IT, and digital banking.
+          </p>
+        </div>
+        <div class="about-stats reveal delay-2">
+          <div class="stat-item">
+            <div class="stat-k">Experience</div>
+            <div class="stat-v">4+ internships</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-k">Technologies</div>
+            <div class="stat-v">25+</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-k">Location</div>
+            <div class="stat-v">Nairobi, KE</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-k">Status</div>
+                        <div class="stat-v">Open to work</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== SKILLS ====================== -->
+  <section id="skills">
+    <div class="container">
+      <div class="eyebrow reveal">Skills</div>
+      <h2 class="section-title reveal">What I work with</h2>
+      <p class="section-intro reveal">
+        My toolkit spans telecom infrastructure, software engineering, AI/ML, and embedded
+        systems. Below is a snapshot of the domains and technologies I'm comfortable in.
+      </p>
+
+      <div class="skill-categories reveal delay-1">
+        <div class="skill-card">
+          <div class="cat-name">IP Networking &amp; Routing</div>
+          <div class="chips">
+            <span class="chip">IPv4 &amp; IPv6 Addressing</span>
+            <span class="chip">TCP/IP</span>
+            <span class="chip">IP/MPLS Fundamentals</span>
+            <span class="chip">Routing &amp; Switching</span>
+            <span class="chip">OSPF (Coursework)</span>
+            <span class="chip">Network Design &amp; Management</span>
+            <span class="chip">LAN/WAN</span>
+            <span class="chip">Network Security</span>
+            <span class="chip">SCADA &amp; Real-Time Monitoring</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="cat-name">Programming &amp; Development</div>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">C++</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Dart</span>
+            <span class="chip">HTML/CSS</span>
+            <span class="chip">Flutter</span>
+            <span class="chip">React</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="cat-name">Emerging &amp; Complementary</div>
+          <div class="chips">
+            <span class="chip">Network Automation (Python)</span>
+            <span class="chip">Cloud Native &amp; Kubernetes</span>
+            <span class="chip">AI/ML Model Development</span>
+            <span class="chip">Data Analysis</span>
+            <span class="chip">TensorFlow</span>
+            <span class="chip">OpenCV</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="cat-name">Systems &amp; Platforms</div>
+          <div class="chips">
+            <span class="chip">Windows &amp; Linux Administration</span>
+            <span class="chip">Active Directory</span>
+            <span class="chip">MS Office 365</span>
+            <span class="chip">Hardware Diagnostics &amp; Assembly</span>
+            <span class="chip">Arduino</span>
+            <span class="chip">Raspberry Pi</span>
+            <span class="chip">Embedded C</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="cat-name">Soft Skills</div>
+          <div class="chips">
+            <span class="chip">Clear Written &amp; Verbal English</span>
+            <span class="chip">Cross-Functional Collaboration</span>
+            <span class="chip">Adaptability</span>
+            <span class="chip">Critical Thinking</span>
+            <span class="chip">Time Management</span>
+            <span class="chip">Attention to Detail</span>
+            <span class="chip">Customer Focus</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="signal-meter reveal delay-2">
+        <div class="meter-title">Core proficiency</div>
+        <div class="signal-grid">
+          <div class="signal-item">
+            <div class="sig-name">Python</div>
+            <div class="signal-bar">
+              <span class="bar active"></span><span class="bar active"></span>
+              <span class="bar active"></span><span class="bar active"></span><span class="bar"></span>
+            </div>
+          </div>
+          <div class="signal-item">
+            <div class="sig-name">Network Engineering</div>
+            <div class="signal-bar">
+              <span class="bar active"></span><span class="bar active"></span>
+              <span class="bar active"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+          </div>
+          <div class="signal-item">
+            <div class="sig-name">AI / ML</div>
+            <div class="signal-bar">
+              <span class="bar active"></span><span class="bar active"></span>
+              <span class="bar active"></span><span class="bar active"></span><span class="bar"></span>
+            </div>
+          </div>
+          <div class="signal-item">
+                        <div class="sig-name">Embedded Systems</div>
+            <div class="signal-bar">
+              <span class="bar active"></span><span class="bar active"></span>
+              <span class="bar active"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== EXPERIENCE ====================== -->
+  <section id="experience">
+    <div class="container">
+      <div class="eyebrow reveal">Experience</div>
+      <h2 class="section-title reveal">Work history</h2>
+      <p class="section-intro reveal">
+        Internships across telecom infrastructure, enterprise IT, digital banking, and
+        academic lab support — building real systems in production environments.
+      </p>
+
+      <div class="timeline reveal delay-1">
+        <!-- KPLC -->
+        <div class="timeline-item">
+          <div class="date">MAY 2025 — AUG 2025</div>
+          <h4>Telecommunications Engineer Intern</h4>
+          <div class="org">Kenya Power &amp; Lighting Company (KPLC) — Nairobi, Kenya</div>
+          <ul>
+            <li>Collaborated with senior engineers and technicians to implement and maintain SCADA systems and real-time monitoring tools, including RTUs and networked telecom equipment, supporting reliable data communication across the utility's network infrastructure.</li>
+            <li>Conducted substation site visits for scheduled maintenance and fault troubleshooting on telecommunications and network infrastructure.</li>
+            <li>Gained practical exposure to networked monitoring systems and data communication protocols underpinning real-time industrial network operations.</li>
+          </ul>
+        </div>
+
+        <!-- SHOFCO -->
+        <div class="timeline-item">
+          <div class="date">MAY 2026 — JUL 2026</div>
+          <h4>IT &amp; Tech Support Intern</h4>
+          <div class="org">Shining Hope for Communities (SHOFCO) — Nairobi, Kenya</div>
+          <ul>
+            <li>Installed and configured operating systems, productivity software, and antivirus tools on desktops and laptops across clinic and school sites.</li>
+            <li>Configured internet connectivity and network devices, and diagnosed hardware/software issues for staff at Shofco Mathare Clinic and Mathare School for Girls.</li>
+            <li>Delivered first-level technical support and issue resolution for the SHA healthcare system and general end users.</li>
+          </ul>
+        </div>
+
+        <!-- KCB -->
+        <div class="timeline-item">
+          <div class="date">JUL 2024 — SEP 2024</div>
+          <h4>Intern Engineer</h4>
+          <div class="org">KCB Bank Limited — Nairobi, Kenya</div>
+          <ul>
+            <li>Provided technical support for digital banking services, including ATM transactions and mobile banking applications.</li>
+            <li>Assisted customers with internet and mobile banking registration, troubleshooting, and usage guidance, strengthening client-facing communication skills.</li>
+          </ul>
+        </div>
+
+        <!-- JKUAT -->
+        <div class="timeline-item">
+          <div class="date">MAY 2023 — AUG 2024</div>
+          <h4>ICT &amp; Systems Engineer Attaché</h4>
+          <div class="org">JKUAT ICT Department — Nairobi, Kenya</div>
+          <ul>
+            <li>Supported technical staff in troubleshooting and maintaining laboratory computers and infrastructure.</li>
+                        <li>Installed and configured software applications across university lab systems.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== EDUCATION ====================== -->
+  <section id="education">
+    <div class="container">
+      <div class="eyebrow reveal">Education</div>
+      <h2 class="section-title reveal">Academic background</h2>
+      <p class="section-intro reveal">
+        Formal training in telecommunications, information engineering, and emerging
+        technologies — paired with hands-on certifications in AI/ML and cloud native.
+      </p>
+
+      <div class="timeline reveal delay-1">
+        <!-- Degree -->
+        <div class="timeline-item">
+          <div class="date">SEP 2021 — MAY 2026</div>
+          <h4>B.Sc. Telecommunication and Information Engineering</h4>
+          <div class="org">Jomo Kenyatta University of Agriculture and Technology (JKUAT) — Nairobi, Kenya</div>
+          <div class="org" style="font-size:13px; color:var(--color-text-dim); margin-bottom:12px;">
+            Second Class Honors (Upper Division)
+          </div>
+          <ul>
+            <li>Data Communication, Signals &amp; Communication, Antenna Theory &amp; Design</li>
+            <li>Wireless Communications, Computer Networking, Network Design &amp; Management</li>
+            <li>Network Security &amp; Cryptography, Digital Signal Processing, Digital Image Processing</li>
+            <li>Distributed Computing, Software Engineering, Database Management Systems</li>
+          </ul>
+        </div>
+
+        <!-- Certifications -->
+        <div class="timeline-item">
+          <div class="date">FEB 2026 — APR 2026</div>
+          <h4>Kubernetes and Cloud Native Essentials</h4>
+          <div class="org">Andela &amp; The Linux Foundation — Nairobi, Kenya</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="date">FEB 2025 — NOV 2025</div>
+          <h4>Software Development Track</h4>
+          <div class="org">Power Learn Project Academy (PLP) — Nairobi, Kenya</div>
+          <div class="org" style="font-size:13px; color:var(--color-text-dim); margin-bottom:12px;">
+            Flutter, Web Development, Database Management, Python, AI for Software Engineering
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="date">JUN 2026 — AUG 2026</div>
+          <h4>Trainee — Artificial Intelligence (AI) and Machine Learning</h4>
+          <div class="org">Samsung Innovation Campus (SIC) &amp; JHUB Africa — Nairobi, Kenya</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== CERTIFICATES ====================== -->
+  <section id="certificates">
+    <div class="container">
+      <div class="eyebrow reveal">Certificates</div>
+      <h2 class="section-title reveal">Certifications &amp; credentials</h2>
+      <p class="section-intro reveal">
+        Verified programmes and credentials I have completed — each one backed by the
+        institution that awarded it, with the certificate image on display.
+      </p>
+
+      <div class="cert-grid">
+        <!-- Certificate 1 — add your image at assets/certs/samsung-ai.jpg -->
+        <article class="cert-card reveal delay-1" data-accent="cyan">
+          <div class="cert-media">
+            <div class="cert-media-placeholder">
+              <span class="cert-media-icon"></span>
+              <span class="cert-media-hint">assets/certs/samsung-ai.jpg</span>
+            </div>
+            <img src="assets/certs/samsung-ai.jpg"
+                 alt="Samsung Innovation Campus artificial intelligence certificate"
+                 loading="lazy" onerror="this.remove()">
+            <span class="cert-year">2026</span>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">
+              <img class="cert-logo" src="assets/logos/samsung-sic.svg"
+                   alt="Samsung Innovation Campus logo" loading="lazy">
+              <span class="cert-school">Samsung Innovation Campus &amp; JHUB Africa</span>
+            </div>
+            <h3>Artificial Intelligence &amp; Machine Learning</h3>
+            <p class="cert-desc">
+              Intensive AI/ML training covering data preparation, supervised and
+              unsupervised learning, model evaluation, and deploying practical
+              Python-based models.
+            </p>
+          </div>
+        </article>
+
+        <!-- Certificate 2 — add your image at assets/certs/kubernetes.svg -->
+        <article class="cert-card reveal delay-2" data-accent="blue">
+          <div class="cert-media">
+            <div class="cert-media-placeholder">
+              <span class="cert-media-icon">&#x2638;&#xFE0F;</span>
+              <span class="cert-media-hint">assets/certs/kubernetes.svg</span>
+            </div>
+            <img src="assets/certs/kubernetes.svg"
+                 alt="Kubernetes and Cloud Native Essentials certificate"
+                 loading="lazy" onerror="this.remove()">
+            <span class="cert-year">2026</span>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">
+              <img class="cert-logo" src="assets/logos/linux-foundation.svg"
+                   alt="The Linux Foundation logo" loading="lazy">
+              <span class="cert-school">Andela &amp; The Linux Foundation</span>
+            </div>
+            <h3>Kubernetes &amp; Cloud Native Essentials</h3>
+            <p class="cert-desc">
+              Container orchestration fundamentals — pods, services, deployments and
+              scaling — plus the cloud native stack and Linux tooling that supports it.
+            </p>
+          </div>
+        </article>
+<!-- Certificate 3 — add your image at assets/certs/plp-software-dev.jpg -->
+        <article class="cert-card reveal delay-3" data-accent="emerald">
+          <div class="cert-media">
+            <div class="cert-media-placeholder">
+              <span class="cert-media-icon">&#x1F4BB;</span>
+              <span class="cert-media-hint">assets/certs/plp-software-dev.jpg</span>
+            </div>
+            <img src="assets/certs/plp-software-dev.jpg"
+                 alt="Power Learn Project software development certificate"
+                 loading="lazy" onerror="this.remove()">
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">
+              <img class="cert-logo" src="assets/logos/plp.svg"
+                   alt="Power Learn Project logo" loading="lazy">
+              <span class="cert-school">Power Learn Project Academy (PLP)</span>
+            </div>
+            <h3>Software Development Track</h3>
+            <p class="cert-desc">
+              Flutter and web development, database management, Python programming, and
+              AI for software engineering — delivered as a project-based cohort.
+            </p>
+          </div>
+        </article>
+
+        <!-- Certificate 4 — add your image at assets/certs/jkuat-degree.jpg -->
+        <article class="cert-card reveal delay-3" data-accent="violet">
+          <div class="cert-media">
+            <div class="cert-media-placeholder">
+              <span class="cert-media-icon">&#x1F393;</span>
+              <span class="cert-media-hint">assets/certs/jkuat-degree.jpg</span>
+            </div>
+            <img src="assets/certs/jkuat-degree.jpg"
+                 alt="JKUAT degree certificate in telecommunication and information engineering"
+                 loading="lazy" onerror="this.remove()">
+            <span class="cert-year">2026</span>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">
+              <img class="cert-logo" src="assets/logos/jkuat.svg"
+                   alt="Jomo Kenyatta University of Agriculture and Technology logo"
+                   loading="lazy">
+              <span class="cert-school">JKUAT</span>
+            </div>
+            <h3>B.Sc. Telecommunication &amp; Information Engineering</h3>
+            <p class="cert-desc">
+              Degree awarded with Second Class Honors (Upper Division), covering data
+              communication, computer networking, signal processing, and network design
+              and management.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Room to grow: copy a <article class="cert-card"> above to add more -->
+      <p class="cert-foot reveal">
+        Issuing institutions' official logos and full-size certificate scans can be
+        dropped into <code>assets/logos/</code> and <code>assets/certs/</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====================== PROJECTS ====================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="eyebrow reveal">Projects</div>
+      <h2 class="section-title reveal">Selected work</h2>
+      <p class="section-intro reveal">
+        A few projects that showcase my journey across networking, AI/ML, robotics, and
+        embedded systems. Each links to its GitHub repository.
+      </p>
+
+      <div class="project-grid">
+        <!-- Project 1 -->
+        <div class="project-card reveal delay-1">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <span class="project-icon">📡</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Network Automation Dashboard</h3>
+            <p class="project-desc">
+              A Python-based SNMP monitoring tool that collects real-time metrics from
+              network devices and visualises KPIs on a live dashboard. Built with Flask
+              and Chart.js for the frontend.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">SNMP</span>
+              <span class="tag">Chart.js</span>
+            </div>
+            <a href="https://github.com/Winstone-Onyango/network-automation-dashboard"
+               class="project-code" target="_blank" rel="noopener">Code →</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal delay-2">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <span class="project-icon">🤖</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>AI Signal Classifier</h3>
+            <p class="project-desc">
+              A TensorFlow model that classifies modulated RF signals using spectrogram
+              analysis. Trained on synthetic and captured signal data for telecom
+              diagnostics and interference detection.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Signal Processing</span>
+            </div>
+            <a href="https://github.com/Winstone-Onyango/ai-signal-classifier"
+               class="project-code" target="_blank" rel="noopener">Code →</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card reveal delay-3">
+          <div class="project-image">
+            <div class="project-placeholder">
+              <span class="project-icon">🔌</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>IoT Home Automation Hub</h3>
+            <p class="project-desc">
+              An ESP32-based smart home system with MQTT messaging, a Flutter mobile
+              app, and a web dashboard. Automates lighting, climate, and security
+              sensors with local fallback control.
+            </p>
+            <div class="project-tags">
+              <span class="tag">ESP32</span>
+              <span class="tag">MQTT</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Embedded C</span>
+            </div>
+                        <a href="https://github.com/Winstone-Onyango/iot-home-automation"
+               class="project-code" target="_blank" rel="noopener">Code →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room to grow: add more project cards above this line -->
+      <div class="projects-more reveal">
+        <a href="https://github.com/Winstone-Onyango" class="btn btn-ghost"
+           target="_blank" rel="noopener">More projects on GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== CONTACT ====================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="eyebrow reveal">Contact</div>
+      <h2 class="section-title reveal">Let's build something together</h2>
+      <p class="section-intro reveal">
+        Have a role, collaboration, or project in mind? Send me a message — I'd love to
+        hear from you.
+      </p>
+
+      <div class="contact-grid">
+        <!-- Contact info -->
+        <div class="reveal delay-1">
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="k">Email</div>
+              <div class="v">
+                <a href="mailto:winstoneonyango76@gmail.com">winstoneonyango76@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="k">Phone &amp; WhatsApp</div>
+              <div class="v">
+                <a href="tel:+254791002178">+254 791 002 178</a>
+                <br>
+                <a href="https://wa.me/254791002178" target="_blank" rel="noopener"
+                   style="display:inline-block; margin-top:6px; font-size:14px;">
+                  💬 Chat on WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="k">Location</div>
+              <div class="v">Nairobi, Kenya</div>
+            </div>
+
+            <div class="contact-item">
+              <div class="k">Elsewhere</div>
+              <div class="v">
+                <div class="social-list">
+                  <a href="https://github.com/Winstone-Onyango" target="_blank" rel="noopener">GitHub</a>
+                  <a href="https://www.linkedin.com/in/winstone-onyango/" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <form class="form-panel reveal delay-2" id="contact-form">
+          <div class="field">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?">
+          </div>
+          <div class="field">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required placeholder="Your message…"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              Send Message
+            </button>
+          </div>
+          <div class="form-message" id="form-message"></div>
+          <p class="form-alt">
+            Need more room, or prefer a standalone page?
+            <a href="contact.html">Open the full contact page →</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        © 2026 Onyango Winstone Odhiambo. Built to connect, power, and think.
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+    <script src="js/script.js"></script>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <span>↑</span>
+  </button>
+
+  <!-- Floating WhatsApp: opens a direct message -->
+  <a class="whatsapp-float"
+     href="https://wa.me/254791002178?text=Hi%20Onyango%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk."
+     target="_blank" rel="noopener" aria-label="Chat with me on WhatsApp">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+      <path d="M20 2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/>
+    </svg>
+  </a>
+</body>
+</html>
