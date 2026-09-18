@@ -679,9 +679,10 @@ section:last-of-type  { border-bottom: none; }
 .cert-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
 .cert-issuer { display: flex; align-items: center; gap: 12px; }
 .cert-logo {
-  width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
-  border: 1px solid var(--color-border); background: var(--color-bg-alt);
-  object-fit: contain;
+  height: 30px; width: auto; max-width: 130px; flex-shrink: 0;
+  object-fit: contain; border-radius: 7px;
+  border: 1px solid var(--color-border);
+  background: #ffffff; padding: 4px 8px;
 }
 .cert-school {
   font-size: 12.5px; font-weight: 600; line-height: 1.45;
@@ -961,3 +962,119 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
   border-left: 3px solid var(--color-violet);
   color: var(--color-text-dim); font-size: 14.5px; line-height: 1.75;
 }
+
+/* ============================================================
+   REFINEMENT LAYER
+   — subdued palette, calm text, sized-down photo, logos
+============================================================ */
+
+/* 1) Plain, readable text — no multicolour gradient text */
+.nav-name-text {
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  -webkit-text-fill-color: currentColor; color: var(--color-text);
+}
+.stat-item .stat-v {
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  -webkit-text-fill-color: currentColor; color: var(--color-text);
+}
+.about-copy p:nth-child(1) strong,
+.about-copy p:nth-child(2) strong,
+.about-copy p:nth-child(3) strong { color: var(--color-text); }
+.eyebrow { color: var(--color-text-mute); }
+.eyebrow::before { background: var(--color-cyan); }
+.section-title::after { background: linear-gradient(90deg, var(--color-cyan), transparent); }
+
+/* 2) One accent colour across cards, bars, chips and tags */
+.skill-card, .skill-card:nth-child(2), .skill-card:nth-child(3),
+.skill-card:nth-child(4), .skill-card:nth-child(5) { --accent: var(--color-cyan); }
+.signal-item, .signal-item:nth-child(2), .signal-item:nth-child(3),
+.signal-item:nth-child(4), .signal-item:nth-child(5), .signal-item:nth-child(6) { --bar: var(--color-cyan); }
+.signal-bar .bar.active { background: var(--color-cyan); }
+.cert-card[data-accent="cyan"], .cert-card[data-accent="blue"],
+.cert-card[data-accent="emerald"], .cert-card[data-accent="violet"] {
+  --accent-1: var(--color-cyan); --accent-2: var(--color-blue);
+}
+.project-card, .project-card:nth-child(2), .project-card:nth-child(3),
+.project-card:nth-child(4), .project-card:nth-child(5), .project-card:nth-child(6) { --accent: var(--color-cyan); }
+.project-tags .tag { background: var(--color-bg-alt); border-color: var(--color-border); }
+
+/* 3) Calm timeline + contact list */
+.timeline::before { background: var(--color-border); opacity: 1; }
+.timeline-item, .timeline-item:nth-child(2), .timeline-item:nth-child(3),
+.timeline-item:nth-child(4), .timeline-item:nth-child(5) { --dot: var(--color-cyan); }
+.contact-list .contact-item .k { color: var(--color-text-mute); }
+.contact-list .contact-item::before { background: var(--color-border); }
+
+/* 4) Quieter ambient washes */
+body::before { opacity: .35; }
+[data-theme="dark"] body::before { opacity: .5; }
+
+/* 5) Profile photo: perfectly sized, softly blended, responsive */
+.photo-frame { width: clamp(340px, 42vw, 500px) !important; }
+.photo-halo { display: none; }
+.hero-photo::before { opacity: .3; filter: blur(60px); }
+.hero-photo::after { display: none; }
+@media (max-width: 768px) { .photo-frame { width: min(88vw, 430px) !important; } }
+@media (max-width: 560px) { .photo-frame { width: min(92vw, 350px) !important; } }
+
+/* 6) Education: timeline left, gown photo right (landscape 711x652) */
+.edu-grid {
+  display: grid; grid-template-columns: 1.15fr .85fr;
+  gap: 56px; align-items: center;
+}
+.edu-photo { position: sticky; top: 108px; }
+.edu-photo figure { margin: 0; position: relative; }
+.edu-photo img {
+  display: block; width: 100%; max-width: min(100%, 540px); height: auto;
+  margin-inline: auto; object-fit: cover;
+  /* Feathered fade on all four edges - photo melts into the background */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+          mask-composite: intersect;
+  filter: contrast(1.04) saturate(1.02) brightness(1.02);
+}
+/* Soft neutral halo behind the photo (theme-aware, no colour cast) */
+.edu-photo::before {
+  content: ""; position: absolute; inset: -8%; z-index: -1;
+  background: radial-gradient(circle at 50% 45%,
+    color-mix(in srgb, var(--color-text) 14%, transparent), transparent 70%);
+  filter: blur(44px); border-radius: 50%;
+}
+@media (max-width: 900px) {
+  .edu-grid { grid-template-columns: 1fr; gap: 40px; }
+  .edu-photo { position: static; max-width: 480px; margin-inline: auto; }
+}
+
+/* 7) Company logos in Experience / Education timelines
+   (real wordmark logos sit on a white chip so they read in both themes) */
+.tl-head { display: flex; align-items: center; gap: 12px; margin: 4px 0 12px; }
+.tl-logo {
+  height: 34px; width: auto; max-width: 130px; object-fit: contain;
+  background: #ffffff; border: 1px solid var(--color-border);
+  border-radius: 8px; padding: 5px 10px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.tl-logo:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+
+/* Certificate issuer logos: same treatment, slightly smaller */
+.cert-logo { height: 28px !important; max-width: 120px; }
+.cert-issuer { gap: 10px; }
+
+/* 8) WhatsApp marks */
+.wa-inline {
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.wa-inline svg { flex-shrink: 0; }
+.whatsapp-float svg { width: 26px; height: 26px; }
+
+/* 9) Plain text everywhere — no multicolour words (hero name, contact heading) */
+.hero-title .name-cyan, .hero-title .name-violet,
+.name-cyan, .name-violet { color: var(--color-text); }
+.hero-tag { color: var(--color-text-mute); }
+.hero-title .hello { color: var(--color-text-dim); }
+.section-title, .cert-body h3, .project-body h3 { color: var(--color-text); }
