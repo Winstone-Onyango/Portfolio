@@ -160,7 +160,7 @@
       const formData = new FormData(contactForm);
       const submitBtn = contactForm.querySelector("button[type='submit']");
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = "Sendingâ€¦";
+      submitBtn.textContent = "Sending...";
       submitBtn.disabled = true;
 
       // POSTs JSON to FormSubmit. The message lands directly in the owner's
