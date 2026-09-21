@@ -1,5 +1,5 @@
-/* ============================================================
-   ONYANGO WINSTONE — PORTFOLIO
+﻿/* ============================================================
+   ONYANGO WINSTONE â€” PORTFOLIO
    Vanilla JS: themes, typewriter, nav, scroll-reveal, form
 ============================================================ */
 
@@ -13,7 +13,7 @@
   const contactForm = document.getElementById("contact-form");
   const formMessage = document.getElementById("form-message");
 
-  /* —  —  —  — Theme dropdown (System / Dark / Light) —  —  —  — */
+  /* â€”  â€”  â€”  â€” Theme dropdown (System / Dark / Light) â€”  â€”  â€”  â€” */
   const themeSelect = document.getElementById("theme-select");
   const themeIcon = document.querySelector(".theme-select-icon");
   const themeIcons = {
@@ -49,7 +49,7 @@
   }
   initTheme();
 
-  /* —  —  —  — Typewriter —  —  —  — */
+  /* â€”  â€”  â€”  â€” Typewriter â€”  â€”  â€”  â€” */
   if (typedEl) {
     const roles = [
       "Telecommunication and Information Engineer",
@@ -87,7 +87,7 @@
     setTimeout(type, 600);
   }
 
-  /* —  —  —  — Mobile nav —  —  —  — */
+  /* â€”  â€”  â€”  â€” Mobile nav â€”  â€”  â€”  â€” */
   if (navToggle && navMenu) {
     function setNav(open) {
       navMenu.classList.toggle("open", open);
@@ -108,7 +108,7 @@
     setNav(false);
   }
 
-  /* —  —  —  — Scroll spy —  —  —  — */
+  /* â€”  â€”  â€”  â€” Scroll spy â€”  â€”  â€”  â€” */
   const sections = document.querySelectorAll("section[id]");
   const navAnchors = document.querySelectorAll(".nav-menu a[href^='#']");
   function updateActiveNav() {
@@ -124,7 +124,7 @@
   window.addEventListener("scroll", updateActiveNav);
   updateActiveNav();
 
-  /* —  —  —  — Scroll reveal —  —  —  — */
+  /* â€”  â€”  â€”  â€” Scroll reveal â€”  â€”  â€”  â€” */
   const revealEls = document.querySelectorAll(".reveal");
   if (revealEls.length && "IntersectionObserver" in window) {
     const observer = new IntersectionObserver(function (entries) {
@@ -140,7 +140,7 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* —  —  —  — Contact form (sends email directly via FormSubmit AJAX) —  —  —  — */
+  /* â€”  â€”  â€”  â€” Contact form (sends email directly via FormSubmit AJAX) â€”  â€”  â€”  â€” */
   // FormSubmit email endpoint - posts straight to the owner's inbox. First
   // submission to a new address triggers a one-off confirmation email (open
   // your inbox and click the link; after that emails are sent for real).
@@ -160,11 +160,11 @@
       const formData = new FormData(contactForm);
       const submitBtn = contactForm.querySelector("button[type='submit']");
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = "Sending…";
+      submitBtn.textContent = "Sendingâ€¦";
       submitBtn.disabled = true;
 
       // POSTs JSON to FormSubmit. The message lands directly in the owner's
-      // inbox — no email application is opened on the visitor's side.
+      // inbox â€” no email application is opened on the visitor's side.
       fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -177,22 +177,31 @@
           _captcha: "false"
         })
       })
-        .then(function (response) {
-          const contentType = response.headers.get("content-type") || "";
-          // 200 + JSON means FormSubmit accepted the submission.
-          // (A non-JSON response here would be a CAPTCHA/interstitial page.)
-          return response.ok && contentType.indexOf("application/json") !== -1;
+        .then(async function (response) {
+          // FormSubmit returns its JSON body with a "text/html" content-type,
+          // so read the text first (works regardless of declared type).
+          const text = await response.text();
+          let payload = null;
+          try { payload = JSON.parse(text); } catch (e) { payload = null; }
+          const status = response.ok && payload ? response.status : 0;
+          return { status: status, payload: payload, raw: text };
         })
-        .then(function (accepted) {
+        .then(function (result) {
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
-          if (accepted) {
+
+          const p = result.payload || {};
+          // FormSubmit's documented contract: { success: "true", message: "..." }.
+          if (result.status >= 200 && result.status < 300 && p.success === "true") {
             showMessage("Message sent", "success");
             contactForm.reset();
             // Reload after a brief confirmation so the visitor sees "Message sent".
             setTimeout(function () { window.location.reload(); }, 1200);
+          } else if (p.success === false) {
+            // Account-setup state, not a code error: show FormSubmit's message.
+            showMessage(p.message || "Message was not sent. Please try again later.", "error");
           } else {
-            showMessage("Something went wrong. Please try again or email me directly.", "error");
+            showMessage("Something went wrong (HTTP " + result.status + "). Please try again or email me directly.", "error");
           }
         })
         .catch(function () {
@@ -203,7 +212,7 @@
     });
   }
 
-  /* — Back to top button — */
+  /* â€” Back to top button â€” */
   const backToTop = document.getElementById("back-to-top");
   if (backToTop) {
     window.addEventListener("scroll", function () {
@@ -214,7 +223,7 @@
     });
   }
 
-  /* — Reading progress bar + sticky header state — */
+  /* â€” Reading progress bar + sticky header state â€” */
   const scrollProgress = document.getElementById("scroll-progress");
   const siteHeader = document.querySelector(".site-header");
 
