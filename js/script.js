@@ -140,9 +140,11 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* —  —  —  — Contact form (Formspree + mailto fallback) —  —  —  — */
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-  const FALLBACK_EMAIL = "winstoneonyango76@gmail.com";
+  /* —  —  —  — Contact form (sends email directly via FormSubmit AJAX) —  —  —  — */
+  // FormSubmit email endpoint - posts straight to the owner's inbox. First
+  // submission to a new address triggers a one-off confirmation email (open
+  // your inbox and click the link; after that emails are sent for real).
+  const FORM_ENDPOINT = "https://formsubmit.co/ajax/winstoneonyango76@gmail.com";
 
   function showMessage(text, type) {
     if (!formMessage) return;
@@ -156,46 +158,47 @@
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
       const formData = new FormData(contactForm);
-      const name = formData.get("name");
-      const email = formData.get("email");
-      const subject = formData.get("subject") || "Portfolio contact";
-      const message = formData.get("message");
       const submitBtn = contactForm.querySelector("button[type='submit']");
       const originalText = submitBtn.textContent;
       submitBtn.textContent = "Sending…";
       submitBtn.disabled = true;
 
-      // Fallback to mailto if Formspree isn't configured yet
-      if (FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
-        const body = "From: " + name + " (" + email + ")%0D%0A%0D%0A" + encodeURIComponent(message);
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        showMessage("✓ Opening your email app to send this message…", "success");
-        window.location.href = "mailto:" + FALLBACK_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
-        return;
-      }
-
-      fetch(FORMSPREE_ENDPOINT, {
+      // POSTs JSON to FormSubmit. The message lands directly in the owner's
+      // inbox — no email application is opened on the visitor's side.
+      fetch(FORM_ENDPOINT, {
         method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          _subject: formData.get("subject") || "New message from your portfolio",
+          _replyto: formData.get("email"),
+          message: formData.get("message"),
+          _captcha: "false"
+        })
       })
         .then(function (response) {
-          if (response.ok) {
-            showMessage("✓ Thanks! Your message has been sent. I’ll reply soon.", "success");
+          const contentType = response.headers.get("content-type") || "";
+          // 200 + JSON means FormSubmit accepted the submission.
+          // (A non-JSON response here would be a CAPTCHA/interstitial page.)
+          return response.ok && contentType.indexOf("application/json") !== -1;
+        })
+        .then(function (accepted) {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          if (accepted) {
+            showMessage("Message sent", "success");
             contactForm.reset();
+            // Reload after a brief confirmation so the visitor sees "Message sent".
+            setTimeout(function () { window.location.reload(); }, 1200);
           } else {
-            response.json().then(function () {
-              showMessage("✗ Something went wrong. Please try again or email me directly.", "error");
-            });
+            showMessage("Something went wrong. Please try again or email me directly.", "error");
           }
         })
         .catch(function () {
-          showMessage("✗ Network error. Please try again or email me directly.", "error");
-        })
-        .finally(function () {
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
+          showMessage("Network error. Please try again or email me directly.", "error");
         });
     });
   }
