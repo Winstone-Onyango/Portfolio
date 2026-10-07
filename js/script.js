@@ -1,5 +1,5 @@
 ﻿/* ============================================================
-   ONYANGO WINSTONE â€” PORTFOLIO
+   ONYANGO WINSTONE PORTFOLIO
    Vanilla JS: themes, typewriter, nav, scroll-reveal, form
 ============================================================ */
 
@@ -13,7 +13,7 @@
   const contactForm = document.getElementById("contact-form");
   const formMessage = document.getElementById("form-message");
 
-  /* â€”  â€”  â€”  â€” Theme dropdown (System / Dark / Light) â€”  â€”  â€”  â€” */
+  /* Theme dropdown (System / Dark / Light) */
   const themeSelect = document.getElementById("theme-select");
   const themeIcon = document.querySelector(".theme-select-icon");
   const themeIcons = {
@@ -49,7 +49,7 @@
   }
   initTheme();
 
-  /* â€”  â€”  â€”  â€” Typewriter â€”  â€”  â€”  â€” */
+  /* Typewriter */
   if (typedEl) {
     const roles = [
       "Telecommunication and Information Engineer",
@@ -87,7 +87,7 @@
     setTimeout(type, 600);
   }
 
-  /* â€”  â€”  â€”  â€” Mobile nav â€”  â€”  â€”  â€” */
+  /* Mobile nav */
   /* Fast count-up stats (0 -> target, ~900ms) + skills marquee pills */
   var countEls = document.querySelectorAll(".count[data-target]");
   if (countEls.length && "IntersectionObserver" in window) {
@@ -159,7 +159,7 @@
     setNav(false);
   }
 
-  /* â€”  â€”  â€”  â€” Scroll spy â€”  â€”  â€”  â€” */
+  /* Scroll spy */
   const sections = document.querySelectorAll("section[id]");
   const navAnchors = document.querySelectorAll(".nav-menu a[href^='#']");
   function updateActiveNav() {
@@ -175,7 +175,7 @@
   window.addEventListener("scroll", updateActiveNav);
   updateActiveNav();
 
-  /* â€”  â€”  â€”  â€” Scroll reveal â€”  â€”  â€”  â€” */
+  /* Scroll reveal */
   const revealEls = document.querySelectorAll(".reveal");
   if (revealEls.length && "IntersectionObserver" in window) {
     const observer = new IntersectionObserver(function (entries) {
@@ -191,7 +191,7 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* â€”  â€”  â€”  â€” Contact form (sends email directly via FormSubmit AJAX) â€”  â€”  â€”  â€” */
+  /* Contact form (sends email directly via FormSubmit AJAX) */
   // FormSubmit email endpoint - posts straight to the owner's inbox. First
   // submission to a new address triggers a one-off confirmation email (open
   // your inbox and click the link; after that emails are sent for real).
@@ -215,7 +215,7 @@
       submitBtn.disabled = true;
 
       // POSTs JSON to FormSubmit. The message lands directly in the owner's
-      // inbox â€” no email application is opened on the visitor's side.
+      // inbox no email application is opened on the visitor's side.
       fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -263,7 +263,7 @@
     });
   }
 
-  /* â€” Back to top button â€” */
+  /* Back to top button */
   const backToTop = document.getElementById("back-to-top");
   if (backToTop) {
     window.addEventListener("scroll", function () {
@@ -274,7 +274,7 @@
     });
   }
 
-  /* â€” Reading progress bar + sticky header state â€” */
+  /* Reading progress bar + sticky header state */
   const scrollProgress = document.getElementById("scroll-progress");
   const siteHeader = document.querySelector(".site-header");
 
