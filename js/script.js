@@ -288,4 +288,17 @@
   window.addEventListener("scroll", updateScrollProgress, { passive: true });
   window.addEventListener("resize", updateScrollProgress);
   updateScrollProgress();
+
+  /* — Project URL reveal (View Site button) — */
+  const projectViewBtns = document.querySelectorAll(".project-view");
+  projectViewBtns.forEach(function (btn) {
+    const urlSpan = btn.parentElement.querySelector("span.project-url");
+    btn.addEventListener("click", function () {
+      if (!urlSpan) return;
+      const url = btn.getAttribute("data-url") || "";
+      if (!url) return;
+      urlSpan.textContent = url;
+      urlSpan.style.display = "inline";
+    });
+  });
 })();
