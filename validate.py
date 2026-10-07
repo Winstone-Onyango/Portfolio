@@ -11,7 +11,7 @@ import sys
 from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-PAGES = ["index.html", "contact.html"]
+PAGES = ["index.html", "contact.html", "projects.html", "certificates.html"]
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input",
         "link", "meta", "param", "source", "track", "wbr"}
 

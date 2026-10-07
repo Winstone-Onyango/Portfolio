@@ -1,9 +1,9 @@
-/* ============================================================
-   ONYANGO WINSTONE — PORTFOLIO
+﻿/* ============================================================
+   ONYANGO WINSTONE ΓÇö PORTFOLIO
    Modern minimal design with dark / light / system themes.
 ============================================================ */
 
-/* — Reset & base — */
+/* ΓÇö Reset & base ΓÇö */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -23,7 +23,7 @@ input, textarea { font: inherit; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-/* — CSS Variables: LIGHT (base) — */
+/* ΓÇö CSS Variables: LIGHT (base) ΓÇö */
 :root {
   --color-bg: #ffffff; --color-bg-panel: #f8fafc; --color-bg-alt: #f1f5f9;
   --color-border: #e2e8f0; --color-border-strong: #cbd5e1;
@@ -40,7 +40,7 @@ input, textarea { font: inherit; }
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* — System dark mode (no explicit theme) — */
+/* ΓÇö System dark mode (no explicit theme) ΓÇö */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #0f172a; --color-bg-panel: #1e293b; --color-bg-alt: #334155;
@@ -55,7 +55,7 @@ input, textarea { font: inherit; }
   }
 }
 
-/* — Explicit theme overrides — */
+/* ΓÇö Explicit theme overrides ΓÇö */
 [data-theme="light"] {
   --color-bg: #ffffff; --color-bg-panel: #f8fafc; --color-bg-alt: #f1f5f9;
   --color-border: #e2e8f0; --color-border-strong: #cbd5e1;
@@ -80,12 +80,12 @@ input, textarea { font: inherit; }
 }
 body[data-theme="dark"], body[data-theme="light"] { background: var(--color-bg); }
 
-/* — Helpers — */
+/* ΓÇö Helpers ΓÇö */
 .container { width: min(100%, 1248px); margin-inline: auto; padding-inline: 24px; }
 @media (max-width: 640px) { .container { padding-inline: 16px; } }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-/* Ambient background — layered colour washes */
+/* Ambient background ΓÇö layered colour washes */
 body::before {
   content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
   background-image:
@@ -153,7 +153,7 @@ section:first-of-type { border-top: 1px solid var(--color-border); }
 section:last-of-type  { border-bottom: none; }
 @media (max-width: 640px) { section { padding: 70px 0; } }
 
-/* — Header / Nav — */
+/* ΓÇö Header / Nav ΓÇö */
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,.75); backdrop-filter: blur(16px);
@@ -167,7 +167,7 @@ section:last-of-type  { border-bottom: none; }
 
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
 
-/* Brand (upper LEFT) — single colour "Winstone" */
+/* Brand (upper LEFT) ΓÇö single colour "Winstone" */
 .nav-name {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--font-display); font-size: 18px; font-weight: 700;
@@ -273,7 +273,7 @@ section:last-of-type  { border-bottom: none; }
   .nav-toggle { display: flex; }
 }
 
-/* — Hero — */
+/* ΓÇö Hero ΓÇö */
 .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
 /* Colourful aurora wash behind the hero */
 .hero::after {
@@ -328,7 +328,7 @@ section:last-of-type  { border-bottom: none; }
 .hero-content { max-width: 600px; display: flex; flex-direction: column; }
 .hero-photo { display: flex; justify-content: center; align-items: center; position: relative; isolation: isolate; }
 
-/* Profile photo — oversized, layered and blended into the background */
+/* Profile photo ΓÇö oversized, layered and blended into the background */
 .photo-frame {
   position: relative; width: clamp(360px, 50vw, 700px); aspect-ratio: 4 / 5;
   border-radius: 36px; overflow: hidden;
@@ -436,7 +436,7 @@ section:last-of-type  { border-bottom: none; }
   .photo-chip::before { animation: none; }
 }
 
-/* — About — */
+/* ΓÇö About ΓÇö */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
 .about-copy { display: flex; flex-direction: column; gap: 20px; }
@@ -470,27 +470,66 @@ section:last-of-type  { border-bottom: none; }
   -webkit-text-fill-color: transparent; color: transparent;
 }
 
-/* — Skills: compact single-line marquee, no titles — */
-.skills-marquee {
-  overflow: hidden; white-space: nowrap;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  padding: 6px 0 10px; margin: 8px 0 4px;
-}
-.skills-track { display: inline-flex; gap: 10px; animation: skills-scroll 36s linear infinite; will-change: transform; }
-.skills-marquee:hover .skills-track { animation-play-state: paused; }
-@keyframes skills-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.skill-pill {
-  display: inline-flex; align-items: center; gap: 8px;
+/* ΓÇö Skills ΓÇö */
+.skill-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; }
+.skill-card {
+  position: relative; overflow: hidden;
   background: var(--color-bg-panel); border: 1px solid var(--color-border);
-  color: var(--color-text-dim); padding: 8px 16px; border-radius: 999px;
-  font-size: 13px; font-family: var(--font-mono); letter-spacing: .02em;
-  transition: border-color .2s ease, color .2s ease, transform .2s ease;
+  border-radius: var(--radius); padding: 24px;
+  box-shadow: var(--shadow); transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  --accent: var(--color-cyan);
 }
-.skill-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--color-cyan); flex-shrink: 0; }
-.skill-pill:hover { border-color: var(--color-cyan); color: var(--color-text); transform: translateY(-2px); }
+/* each card gets its own accent colour */
+.skill-card:nth-child(1) { --accent: var(--color-cyan); }
+.skill-card:nth-child(2) { --accent: var(--color-violet); }
+.skill-card:nth-child(3) { --accent: var(--color-amber); }
+.skill-card:nth-child(4) { --accent: var(--color-emerald); }
+.skill-card:nth-child(5) { --accent: var(--color-pink); }
+.skill-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: .85;
+}
+.skill-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.skill-card .cat-name {
+  display: flex; align-items: center; gap: 9px;
+  font-family: var(--font-display); font-size: 13.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em; margin-bottom: 18px; color: var(--color-text);
+}
+.skill-card .cat-name::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.skill-card .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  background: color-mix(in srgb, var(--accent, var(--color-cyan)) 10%, var(--color-bg-alt));
+  border: 1px solid color-mix(in srgb, var(--accent, var(--color-cyan)) 30%, var(--color-border));
+  color: var(--color-text-dim); padding: 7px 14px; border-radius: 999px;
+  font-size: 13px; font-family: var(--font-mono); letter-spacing: .02em;
+  transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.chip:hover {
+  background: var(--accent, var(--color-cyan)); color: #ffffff;
+  transform: translateY(-2px); border-color: transparent;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--accent, var(--color-cyan)) 40%, transparent);
+}
 
-/* — Timeline — */
+/* Signal bars */
+.signal-meter { margin: 48px 0 20px; }
+.signal-meter .meter-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-mute); margin-bottom: 16px; }
+.signal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 24px; }
+.signal-item { display: flex; flex-direction: column; gap: 8px; --bar: var(--color-cyan); }
+.signal-item:nth-child(2) { --bar: var(--color-violet); }
+.signal-item:nth-child(3) { --bar: var(--color-emerald); }
+.signal-item:nth-child(4) { --bar: var(--color-amber); }
+.signal-item:nth-child(5) { --bar: var(--color-pink); }
+.signal-item:nth-child(6) { --bar: var(--color-blue); }
+.signal-item .sig-name { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-dim); }
+.signal-bar { display: flex; gap: 3px; height: 8px; }
+.signal-bar .bar { flex: 1; height: 100%; border-radius: 2px; background: var(--color-border); }
+.signal-bar .bar.active { background: linear-gradient(90deg, var(--color-cyan), var(--bar)); }
+
+/* ΓÇö Timeline ΓÇö */
 .timeline { position: relative; padding-left: 12px; }
 .timeline::before {
   content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; border-radius: 2px;
@@ -522,47 +561,47 @@ section:last-of-type  { border-bottom: none; }
 .timeline-item ul li { list-style: disc; margin-bottom: 6px; }
 .timeline-item ul li::marker { color: var(--dot); }
 
-/* — Projects: flat, quiet cards — */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+/* ΓÇö Projects ΓÇö */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
 .project-card {
+  position: relative; overflow: hidden;
   background: var(--color-bg-panel); border: 1px solid var(--color-border);
-  border-radius: var(--radius); box-shadow: var(--shadow-sm);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  display: flex; flex-direction: column;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease;
+  display: flex; flex-direction: column; --accent: var(--color-cyan);
 }
-.project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--color-border-strong); }
+.project-card:nth-child(2) { --accent: var(--color-violet); }
+.project-card:nth-child(3) { --accent: var(--color-emerald); }
+.project-card:nth-child(4) { --accent: var(--color-amber); }
+.project-card:nth-child(5) { --accent: var(--color-pink); }
+.project-card:nth-child(6) { --accent: var(--color-blue); }
+.project-card::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent); opacity: .8;
+}
+.project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
 .project-image {
   width: 100%; height: 180px; background: var(--color-bg-alt);
   border-bottom: 1px solid var(--color-border); overflow: hidden;
   display: flex; align-items: center; justify-content: center;
 }
-.project-image img { width: 100%; height: 100%; object-fit: cover; }
-.project-body { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
-.project-body h3 { font-size: 18px; margin-bottom: 10px; color: var(--color-text); }
+.project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.project-card:hover .project-image img { transform: scale(1.05); }
+.project-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+.project-body h3 { font-size: 19px; margin-bottom: 12px; color: var(--color-text); }
 .project-desc { color: var(--color-text-dim); font-size: 14.5px; line-height: 1.7; margin-bottom: 16px; flex-grow: 1; }
-.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .project-tags .tag {
   font-family: var(--font-mono); font-size: 12px;
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--accent) 12%, var(--color-bg));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--color-border));
   color: var(--color-text-dim); padding: 5px 12px; border-radius: 6px;
 }
 .project-code {
   margin-top: auto; font-family: var(--font-mono); font-size: 13px; font-weight: 600;
-  color: var(--color-cyan); display: inline-flex; align-items: center; gap: 6px;
+  color: var(--accent); display: inline-flex; align-items: center; gap: 6px;
 }
 .project-code:hover { color: var(--color-text); }
-/* Side-by-side View (live site) + Code links */
-.project-links { margin-top: auto; display: flex; align-items: center; gap: 18px; }
-.project-links .project-code { margin-top: 0; }
-.project-view {
-  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
-  color: var(--color-text); display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 16px; border-radius: 999px;
-  border: 1px solid var(--color-border-strong);
-  transition: background .2s ease, color .2s ease, border-color .2s ease;
-}
-.project-view:hover { background: var(--color-cyan); border-color: var(--color-cyan); color: #fff; }
 .project-placeholder {
   width: 100%; height: 100%; display: flex;
   align-items: center; justify-content: center;
@@ -576,9 +615,6 @@ section:last-of-type  { border-bottom: none; }
    CERTIFICATES
 ============================================================ */
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 28px; }
-/* Archive pages: breathing room between heading and grid */
-.archive-grid { margin-top: 44px; }
-.page-hero .archive-grid { margin-bottom: 8px; }
 .cert-card {
   position: relative; display: flex; flex-direction: column;
   background: var(--color-bg-panel); border: 1px solid var(--color-border);
@@ -602,7 +638,7 @@ section:last-of-type  { border-bottom: none; }
   border-color: var(--accent-1);
 }
 
-/* Certificate image area — image fills the card edge-to-edge, fully responsive */
+/* Certificate image area ΓÇö image fills the card edge-to-edge, fully responsive */
 .cert-media {
   position: relative; aspect-ratio: 3 / 2; overflow: hidden;
   background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border);
@@ -610,7 +646,7 @@ section:last-of-type  { border-bottom: none; }
 }
 .cert-media img {
   position: relative; z-index: 2; width: 100%; height: 100%;
-  /* fill the whole media area — no letterboxing, no gaps */
+  /* fill the whole media area ΓÇö no letterboxing, no gaps */
   object-fit: cover; object-position: center; display: block;
   transition: transform .45s cubic-bezier(.22,1,.36,1);
 }
@@ -670,7 +706,7 @@ section:last-of-type  { border-bottom: none; }
 /* Mobile: keep the ratio instead of a fixed height so scans aren't over-cropped */
 @media (max-width: 640px) { .cert-media { aspect-ratio: 16 / 10; } }
 
-/* — Contact — */
+/* ΓÇö Contact ΓÇö */
 .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: start; }
 @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
 .contact-list { display: flex; flex-direction: column; gap: 22px; }
@@ -703,8 +739,18 @@ section:last-of-type  { border-bottom: none; }
 .social-list a:hover { color: var(--color-cyan); }
 
 .form-panel {
+  position: relative; overflow: hidden;
   background: var(--color-bg-panel); border: 1px solid var(--color-border);
   border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow);
+}
+.form-panel::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-violet), var(--color-pink), var(--color-amber));
+}
+.form-panel::after {
+  content: ""; position: absolute; top: -40%; right: -30%; width: 60%; height: 80%;
+  background: radial-gradient(circle, rgba(139,92,246,.10), transparent 70%);
+  pointer-events: none;
 }
 .form-panel .field { margin-bottom: 24px; }
 .form-panel .field label {
@@ -728,14 +774,14 @@ section:last-of-type  { border-bottom: none; }
 .form-message.success { background: rgba(16,185,129,.12); color: var(--color-success); border: 1px solid rgba(16,185,129,.30); }
 .form-message.error { background: rgba(239,68,68,.12); color: var(--color-error); border: 1px solid rgba(239,68,68,.30); }
 
-/* — Footer — */
+/* ΓÇö Footer ΓÇö */
 footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
 .footer-brand { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-mute); letter-spacing: .12em; }
 .footer-links { display: flex; gap: 28px; font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-mute); letter-spacing: .06em; }
 .footer-links a:hover { color: var(--color-cyan); }
 
-/* — Reveal on scroll — */
+/* ΓÇö Reveal on scroll ΓÇö */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
 .reveal.delay-1 { transition-delay: .1s; }
@@ -776,6 +822,9 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
   .btn { padding: 12px 20px; font-size: 14.5px; }
   .about-grid, .contact-grid, .contact-page-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .skill-categories { grid-template-columns: 1fr; gap: 20px; }
+  .skill-card { padding: 22px 20px; }
+  .signal-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
   .project-grid, .cert-grid { grid-template-columns: 1fr; gap: 24px; }
   .form-panel { padding: 28px 22px; }
   .quick-cards { grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
@@ -790,7 +839,7 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 
 /* Touch devices: no hover states to worry about, keep cards static */
 @media (hover: none) {
-  .project-card:hover, .cert-card:hover { transform: none; }
+  .project-card:hover, .cert-card:hover, .skill-card:hover { transform: none; }
 }
 
 @media (max-width: 560px) {
@@ -802,6 +851,7 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
   .hero-links { flex-wrap: wrap; gap: 18px; }
   .about-stats { grid-template-columns: 1fr; }
   .stat-item .stat-v { font-size: 24px; }
+  .signal-grid { grid-template-columns: 1fr; }
   .quick-cards { grid-template-columns: 1fr; }
   .timeline { padding-left: 6px; }
   .timeline-item { padding-left: 22px; }
@@ -825,7 +875,7 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
   .container { max-width: 1320px; }
 }
 
-/* — Hero entrance animation — */
+/* ΓÇö Hero entrance animation ΓÇö */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -838,7 +888,7 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 .hero-links   { animation: fadeInUp .8s ease .6s both; }
 .hero-photo   { animation: fadeInUp .8s ease .4s both; }
 
-/* — Back to top button — */
+/* ΓÇö Back to top button ΓÇö */
 .back-to-top {
   position: fixed; bottom: 32px; right: 32px;
   width: 52px; height: 52px; border-radius: 50%;
@@ -853,19 +903,19 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
 .back-to-top:hover { transform: translateY(-2px) scale(1.08); box-shadow: 0 10px 30px rgba(14,165,233,.35); }
 
-/* — Back to top mobile — */
+/* ΓÇö Back to top mobile ΓÇö */
 @media (max-width: 640px) {
   .back-to-top { bottom: 24px; right: 20px; width: 48px; height: 48px; font-size: 18px; }
 }
 
-/* — Reading progress bar — */
+/* ΓÇö Reading progress bar ΓÇö */
 .scroll-progress {
   position: fixed; top: 0; left: 0; height: 3px; width: 0;
   background: linear-gradient(90deg, var(--color-cyan), var(--color-violet));
   z-index: 200; transition: width .12s linear;
 }
 
-/* — Floating WhatsApp button — */
+/* ΓÇö Floating WhatsApp button ΓÇö */
 .whatsapp-float {
   position: fixed; bottom: 32px; left: 32px;
   width: 52px; height: 52px; border-radius: 50%;
@@ -877,7 +927,7 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 .whatsapp-float:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 12px 30px rgba(37,211,102,.45); }
 @media (max-width: 640px) { .whatsapp-float { bottom: 24px; left: 20px; width: 48px; height: 48px; } }
 
-/* — Inline form footer note — */
+/* ΓÇö Inline form footer note ΓÇö */
 .form-alt {
   margin: 18px 0 0; font-family: var(--font-mono); font-size: 12px;
   color: var(--color-text-mute); letter-spacing: .02em;
@@ -885,8 +935,8 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 .form-alt a { color: var(--color-cyan); }
 .form-alt a:hover { color: var(--color-violet); }
 
-/* — "Show more" affordance under preview grids — */
-.section-more { margin-top: 36px; text-align: center; }
+/* ΓÇö Projects: "more on GitHub" affordance ΓÇö */
+.projects-more { margin-top: 44px; text-align: center; }
 
 /* ============================================================
    CONTACT PAGE (contact.html)
@@ -920,10 +970,10 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 
 /* ============================================================
    REFINEMENT LAYER
-   — subdued palette, calm text, sized-down photo, logos
+   ΓÇö subdued palette, calm text, sized-down photo, logos
 ============================================================ */
 
-/* 1) Plain, readable text — no multicolour gradient text */
+/* 1) Plain, readable text ΓÇö no multicolour gradient text */
 .nav-name-text {
   background: none; -webkit-background-clip: initial; background-clip: initial;
   -webkit-text-fill-color: currentColor; color: var(--color-text);
@@ -939,11 +989,18 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 .eyebrow::before { background: var(--color-cyan); }
 .section-title::after { background: linear-gradient(90deg, var(--color-cyan), transparent); }
 
-/* 2) One accent colour across timeline dots and tags */
+/* 2) One accent colour across cards, bars, chips and tags */
+.skill-card, .skill-card:nth-child(2), .skill-card:nth-child(3),
+.skill-card:nth-child(4), .skill-card:nth-child(5) { --accent: var(--color-cyan); }
+.signal-item, .signal-item:nth-child(2), .signal-item:nth-child(3),
+.signal-item:nth-child(4), .signal-item:nth-child(5), .signal-item:nth-child(6) { --bar: var(--color-cyan); }
+.signal-bar .bar.active { background: var(--color-cyan); }
 .cert-card[data-accent="cyan"], .cert-card[data-accent="blue"],
 .cert-card[data-accent="emerald"], .cert-card[data-accent="violet"] {
   --accent-1: var(--color-cyan); --accent-2: var(--color-blue);
 }
+.project-card, .project-card:nth-child(2), .project-card:nth-child(3),
+.project-card:nth-child(4), .project-card:nth-child(5), .project-card:nth-child(6) { --accent: var(--color-cyan); }
 .project-tags .tag { background: var(--color-bg-alt); border-color: var(--color-border); }
 
 /* 3) Calm timeline + contact list */
@@ -1020,7 +1077,7 @@ body::before { opacity: .35; }
 .wa-inline svg { flex-shrink: 0; }
 .whatsapp-float svg { width: 26px; height: 26px; }
 
-/* 9) Plain text everywhere — no multicolour words (hero name, contact heading) */
+/* 9) Plain text everywhere ΓÇö no multicolour words (hero name, contact heading) */
 .hero-title .name-cyan, .hero-title .name-violet,
 .name-cyan, .name-violet { color: var(--color-text); }
 .hero-tag { color: var(--color-text-mute); }

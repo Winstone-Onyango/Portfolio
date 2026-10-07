@@ -88,6 +88,57 @@
   }
 
   /* â€”  â€”  â€”  â€” Mobile nav â€”  â€”  â€”  â€” */
+  /* Fast count-up stats (0 -> target, ~900ms) + skills marquee pills */
+  var countEls = document.querySelectorAll(".count[data-target]");
+  if (countEls.length && "IntersectionObserver" in window) {
+    var countObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        countObserver.unobserve(el);
+        var target = parseInt(el.getAttribute("data-target"), 10) || 0;
+        var duration = 900;
+        var start = performance.now();
+        function tick(now) {
+          var p = Math.min(1, (now - start) / duration);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.4 });
+    countEls.forEach(function (el) { countObserver.observe(el); });
+  }
+
+  var skillsTrack = document.getElementById("skills-track");
+  if (skillsTrack) {
+    var skills = [
+      "Python", "JavaScript", "C", "C++", "Dart",
+      "Django", "Flask", "FastAPI", "React.js", "Node.js", "Flutter",
+      "HTML5", "CSS3", "REST APIs", "SQL", "MySQL", "PostgreSQL",
+      "NumPy", "Pandas", "scikit-learn", "TensorFlow", "OpenCV",
+      "Deep Learning", "LLMs", "Network Design", "Subnetting",
+      "Network Security", "Fibre Optics", "SCADA", "Linux",
+      "Docker", "Kubernetes", "CI/CD", "Git & GitHub",
+      "Arduino", "ESP32", "Raspberry Pi", "MATLAB", "AutoCAD",
+      "Packet Tracer", "PSpice"
+    ];
+    var seen = {};
+    var unique = skills.filter(function (s) { return seen[s] ? false : (seen[s] = true); });
+    function pill(label, hidden) {
+      var span = document.createElement("span");
+      span.className = "skill-pill";
+      span.textContent = label;
+      if (hidden) span.setAttribute("aria-hidden", "true");
+      return span;
+    }
+    unique.forEach(function (s) { skillsTrack.appendChild(pill(s, false)); });
+    unique.forEach(function (s) { skillsTrack.appendChild(pill(s, true)); });
+  }
+
+  /* — Mobile nav — */
   if (navToggle && navMenu) {
     function setNav(open) {
       navMenu.classList.toggle("open", open);
