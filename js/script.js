@@ -289,16 +289,13 @@
   window.addEventListener("resize", updateScrollProgress);
   updateScrollProgress();
 
-  /* — Project URL reveal (View Site button) — */
+  /* — Project "View Site" — open the live site in a new tab — */
   const projectViewBtns = document.querySelectorAll(".project-view");
   projectViewBtns.forEach(function (btn) {
-    const urlSpan = btn.parentElement.querySelector("span.project-url");
     btn.addEventListener("click", function () {
-      if (!urlSpan) return;
       const url = btn.getAttribute("data-url") || "";
       if (!url) return;
-      urlSpan.textContent = url;
-      urlSpan.style.display = "inline";
+      window.open(url, "_blank", "noopener,noreferrer");
     });
   });
 })();
