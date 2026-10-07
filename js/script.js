@@ -88,25 +88,57 @@
   }
 
   /* Mobile nav */
-  /* Fast count-up stats (0 -> target, ~900ms) + skills marquee pills */
+  /* Fast count-up stats (0 -> target, ~900ms) - repeats while visible */
   var countEls = document.querySelectorAll(".count[data-target]");
   if (countEls.length && "IntersectionObserver" in window) {
-    var countObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        countObserver.unobserve(el);
-        var target = parseInt(el.getAttribute("data-target"), 10) || 0;
-        var duration = 900;
+    var countLoops = {}; /* el -> { running, raf, timer } */
+    function stopCount(el) {
+      var state = countLoops[el.dataset.targetId];
+      if (!state) return;
+      state.running = false;
+      cancelAnimationFrame(state.raf);
+      clearTimeout(state.timer);
+      delete countLoops[el.dataset.targetId];
+      el.textContent = "0";
+    }
+    function startCount(el) {
+      var id = el.dataset.targetId;
+      if (countLoops[id] && countLoops[id].running) return; /* already looping */
+      var target = parseInt(el.getAttribute("data-target"), 10) || 0;
+      var duration = 900;
+      var hold = 800; /* pause at the target before restarting */
+      var state = { running: true, raf: 0, timer: 0 };
+      countLoops[id] = state;
+      function animate() {
+        if (!state.running) return;
+        el.textContent = "0";
         var start = performance.now();
         function tick(now) {
+          if (!state.running) return;
           var p = Math.min(1, (now - start) / duration);
           var eased = 1 - Math.pow(1 - p, 3);
           el.textContent = Math.round(target * eased);
-          if (p < 1) requestAnimationFrame(tick);
-          else el.textContent = target;
+          if (p < 1) {
+            state.raf = requestAnimationFrame(tick);
+          } else {
+            el.textContent = target;
+            state.timer = setTimeout(function () {
+              if (!state.running) return;
+              animate(); /* loop forever while the stat is on screen */
+            }, hold);
+          }
         }
-        requestAnimationFrame(tick);
+        state.raf = requestAnimationFrame(tick);
+      }
+      animate();
+    }
+    var countId = 0;
+    var countObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var el = entry.target;
+        if (!el.dataset.targetId) el.dataset.targetId = "count-" + (countId++);
+        if (entry.isIntersecting) startCount(el);
+        else stopCount(el);
       });
     }, { threshold: 0.4 });
     countEls.forEach(function (el) { countObserver.observe(el); });
