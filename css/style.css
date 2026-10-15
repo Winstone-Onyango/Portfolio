@@ -5,35 +5,86 @@
 
 /* — Reset & base — */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px; line-height: 1.7;
   background-color: var(--color-bg);
   color: var(--color-text);
-  overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; overflow-x: clip; -webkit-font-smoothing: antialiased;
+  max-width: 100vw;
+}
+/* Belt-and-braces: no section may ever stretch the page wider than the phone */
+main, section, header, footer { max-width: 100vw; overflow-x: clip; }
+/* Off-canvas mobile nav sits translated 105% right even when closed — on
+   some mobile browsers a fixed off-screen panel still extends the scroll
+   area, so hide it entirely until opened. */
+.nav-menu { visibility: hidden; }
+.nav-menu.open { visibility: visible; }
+@media (min-width: 981px) {
+  .nav-menu { visibility: visible; }
 }
 /* Tower backdrop — dedicated fixed layer (not `background-attachment: fixed`,
    which iOS / Android Chrome ignore, hence "no background on mobile").
    `cover + center` = fills any screen with no stretch; faint veil keeps
-   text readable while letting the tower show through just a little. */
+   text readable while letting the tower show through just a little.
+   NOTE: the tower sits on the RIGHT of the photo (~72%), so the focal
+   point is biased right — desktop shows the full frame, phones crop. */
 body::after {
   content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
   background-image:
     linear-gradient(180deg,
       color-mix(in srgb, var(--color-bg) 82%, transparent),
       color-mix(in srgb, var(--color-bg) 86%, transparent)),
-    url("../assets/Midnight Signal Tower.png");
+    url("../assets/Midnight%20Signal%20Tower.jpg");
   background-size: cover, cover;
-  background-position: center center, center center;
+  background-position: center center, 72% center;
   background-repeat: no-repeat, no-repeat;
 }
 @media (max-width: 768px) {
+  /* Phones are tall/portrait: plain centered `cover` zooms into the image
+     middle, which pushed the tower off "further right". Keep the tower's
+     focal point so it stays in view instead of drifting. */
   body::after {
-    background-position: center top, center top;
+    background-size: cover, cover;
+    background-position: center center, 72% center;
   }
+  /* Kill the biggest mobile GPU hogs: the animated aurora wash, card
+     backdrop-blurs and deep shadows all force repaint on scroll. */
+  .hero::after { animation: none; opacity: .35; }
+  .photo-frame, .edu-photo-frame { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .project-card, .cert-card, .form-panel { box-shadow: var(--shadow-sm); }
+  .site-header { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 }
+@media (max-width: 560px) {
+  /* Very narrow phones crop hardest — pull the focal point slightly further
+     toward the tower so it can't drift right off-screen. */
+  body::after { background-position: center center, 78% center; }
+}
+
+/* — Global responsiveness safety: nothing may force horizontal scroll —
+   (a single overflowing element breaks "responsiveness" on the whole page) */
+img { height: auto; }
+.container, .nav, .hero-inner, .footer-inner { min-width: 0; max-width: 100%; }
+.hero-photo, .photo-frame, .project-image, .cert-media { min-width: 0; }
+/* Grid children default to min-width:auto — one 300px track or a long word
+   (URL, tag, "Django REST Framework") then forces the page wider than the
+   phone. These three rules cage every grid on the site. */
+.project-grid, .cert-grid, .about-stats, .quick-cards,
+.about-grid, .contact-grid, .contact-page-grid, .skills-grid {
+  min-width: 0; max-width: 100%; overflow-x: clip;
+}
+.project-grid > *, .cert-grid > *, .about-stats > *, .quick-cards > *,
+.about-grid > *, .contact-grid > *, .contact-page-grid > * {
+  min-width: 0; max-width: 100%;
+}
+.project-body, .cert-body, .project-desc, .cert-desc, .qc-v {
+  min-width: 0; overflow-wrap: anywhere; word-break: break-word;
+}
+.project-image img, .cert-media img { max-width: 100%; }
+/* Skip off-screen rendering work so scroll + load stay fast on phones */
+.project-card, .cert-card, .timeline-item { content-visibility: auto; contain-intrinsic-size: auto 420px; }
 img, picture, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; margin: 0; padding: 0; }
@@ -540,12 +591,13 @@ section:last-of-type  { border-bottom: none; }
 .timeline-item ul li::marker { color: var(--dot); }
 
 /* — Projects: flat, quiet cards — */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; }
 .project-card {
   background: var(--color-bg-panel); border: 1px solid var(--color-border);
   border-radius: var(--radius); box-shadow: var(--shadow-sm);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; min-width: 0; max-width: 100%;
+  overflow: hidden; overflow-wrap: anywhere;
 }
 .project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--color-border-strong); }
 .project-image {
@@ -593,7 +645,7 @@ section:last-of-type  { border-bottom: none; }
 /* ============================================================
    CERTIFICATES
 ============================================================ */
-.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 28px; }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); gap: 28px; }
 /* Archive pages: breathing room between heading and grid */
 .archive-grid { margin-top: 44px; }
 .page-hero .archive-grid { margin-bottom: 8px; }
@@ -785,6 +837,15 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
   section { padding: 70px 0; }
+  /* Hard cage for phones: grid tracks + auto margins can never exceed the
+     viewport, so there is no empty strip to scroll into on the right. */
+  .project-grid, .cert-grid, .about-stats, .quick-cards,
+  .about-grid, .contact-grid, .contact-page-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-inline: 0;
+  }
+  .project-card, .cert-card { width: 100%; max-width: 100%; }
+  .hero { padding: 56px 0 68px; }
   .section-title { font-size: clamp(25px, 7vw, 36px); }
   .section-intro { font-size: 16.5px; margin-bottom: 34px; }
   h1, .hero-title { font-size: clamp(30px, 9vw, 44px); }

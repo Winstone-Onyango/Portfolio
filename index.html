@@ -7,8 +7,10 @@
   <meta name="description" content="Onyango Winstone — Telecommunication and Information Engineering graduate specializing in networks, SCADA systems, IoT and AI/ML. I build things that connect, power, and think.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/Midnight%20Signal%20Tower.jpg" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>body::after{background-image:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,.86)),url("assets/Midnight%20Signal%20Tower.jpg")}body::after{background-position:center center,72% center}@media(prefers-color-scheme:dark){body::after{background-image:linear-gradient(180deg,rgba(15,23,42,.82),rgba(15,23,42,.86)),url("assets/Midnight%20Signal%20Tower.jpg")}}</style>
 </head>
 <body>
 
@@ -98,7 +100,7 @@
           <img src="assets/profile.jpg"
                onerror="this.onerror=null;this.src='assets/profile-placeholder.svg';"
                alt="Onyango Winstone" class="profile-img"
-               width="800" height="1000" fetchpriority="high">
+               width="800" height="1000" fetchpriority="high" decoding="async">
         </div>
       </div>
     </div>
@@ -604,7 +606,7 @@
     </div>
   </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 
   <!-- Back to top -->
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">
