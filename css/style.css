@@ -10,8 +10,29 @@ body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px; line-height: 1.7;
-  background: var(--color-bg); color: var(--color-text);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   overflow-x: hidden; -webkit-font-smoothing: antialiased;
+}
+/* Tower backdrop — dedicated fixed layer (not `background-attachment: fixed`,
+   which iOS / Android Chrome ignore, hence "no background on mobile").
+   `cover + center` = fills any screen with no stretch; faint veil keeps
+   text readable while letting the tower show through just a little. */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background-image:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--color-bg) 82%, transparent),
+      color-mix(in srgb, var(--color-bg) 86%, transparent)),
+    url("../assets/Midnight Signal Tower.png");
+  background-size: cover, cover;
+  background-position: center center, center center;
+  background-repeat: no-repeat, no-repeat;
+}
+@media (max-width: 768px) {
+  body::after {
+    background-position: center top, center top;
+  }
 }
 img, picture, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -78,7 +99,7 @@ input, textarea { font: inherit; }
   --shadow: 0 14px 38px rgba(0,0,0,.35);
   --shadow-lg: 0 24px 48px rgba(0,0,0,.45);
 }
-body[data-theme="dark"], body[data-theme="light"] { background: var(--color-bg); }
+body[data-theme="dark"], body[data-theme="light"] { background-color: var(--color-bg); }
 
 /* — Helpers — */
 .container { width: min(100%, 1248px); margin-inline: auto; padding-inline: 24px; }
@@ -167,24 +188,20 @@ section:last-of-type  { border-bottom: none; }
 
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
 
-/* Brand (upper LEFT) — single colour "Winstone" */
+/* Brand (upper LEFT) — minimal italic wordmark "Onyango Winstone" */
 .nav-name {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-display); font-size: 18px; font-weight: 700;
-  letter-spacing: -.03em; color: var(--color-text); white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 0;
+  font-family: Georgia, 'Times New Roman', serif; font-size: 19px; font-weight: 400;
+  font-style: italic; letter-spacing: .01em; color: var(--color-text); white-space: nowrap;
+  opacity: .92; transition: opacity .25s ease;
 }
-.nav-name-mark {
-  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px;
-  font-size: 16px; font-weight: 700; color: #ffffff;
-  background: linear-gradient(135deg, var(--color-cyan), var(--color-violet) 55%, var(--color-pink));
-  box-shadow: 0 4px 14px rgba(139,92,246,.35);
-  transition: transform .3s cubic-bezier(.22,1,.36,1);
-}
-.nav-name:hover .nav-name-mark { transform: rotate(-8deg) scale(1.08); }
+.nav-name:hover { opacity: 1; }
+.nav-name-mark { display: none; }
+.nav-name:hover .nav-name-mark { transform: none; }
 .nav-name-text {
-  background: linear-gradient(100deg, var(--color-text) 30%, var(--color-cyan) 65%, var(--color-violet));
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
+  background: none; -webkit-background-clip: initial; background-clip: initial;
+  -webkit-text-fill-color: currentColor; color: inherit;
+  font: inherit; font-style: italic;
 }
 
 /* Horizontal navigation pinned to the upper RIGHT */
@@ -924,10 +941,11 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
    — subdued palette, calm text, sized-down photo, logos
 ============================================================ */
 
-/* 1) Plain, readable text — no multicolour gradient text */
+/* 1) Plain, readable text — no multicolour gradient text (keep minimal italic wordmark) */
 .nav-name-text {
   background: none; -webkit-background-clip: initial; background-clip: initial;
-  -webkit-text-fill-color: currentColor; color: var(--color-text);
+  -webkit-text-fill-color: currentColor; color: inherit;
+  font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400;
 }
 .stat-item .stat-v {
   background: none; -webkit-background-clip: initial; background-clip: initial;
@@ -954,9 +972,9 @@ footer { padding: 48px 0 32px; border-top: 1px solid var(--color-border); }
 .contact-list .contact-item .k { color: var(--color-text-mute); }
 .contact-list .contact-item::before { background: var(--color-border); }
 
-/* 4) Quieter ambient washes */
-body::before { opacity: .35; }
-[data-theme="dark"] body::before { opacity: .5; }
+/* 4) Quieter ambient washes — keep faint so the tower shows through a little */
+body::before { opacity: .18; }
+[data-theme="dark"] body::before { opacity: .25; }
 
 /* 5) Profile photo: perfectly sized, softly blended, responsive */
 .photo-frame { width: clamp(340px, 42vw, 500px) !important; }
