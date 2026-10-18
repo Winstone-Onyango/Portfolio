@@ -56,7 +56,7 @@ export function ExpertiseAreas() {
   const active = areas[activeIndex];
 
   return (
-    <section id="expertise" className="section-padding relative">
+    <section id="expertise" className="section-padding relative scroll-mt-20">
       <div className="absolute inset-0 bg-grid opacity-10" />
       <div className="section-container relative z-10">
         <ScrollReveal>
@@ -72,14 +72,14 @@ export function ExpertiseAreas() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="grid lg:grid-cols-[320px_1fr] gap-8">
-            {/* Left: Tab navigation */}
-            <div className="flex flex-col gap-2">
+          <div className="grid lg:grid-cols-[320px_1fr] gap-6 sm:gap-8">
+            {/* Left: Tab navigation — horizontal scroll on phones, column on desktop */}
+            <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 lg:pb-0">
               {areas.map((area, i) => (
                 <button
                   key={area.title}
                   onClick={() => setActiveIndex(i)}
-                  className={`flex items-center gap-4 p-4 rounded-sm text-left transition-all border ${
+                  className={`flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-sm text-left transition-all border shrink-0 lg:shrink min-w-[220px] sm:min-w-0 ${
                     i === activeIndex
                       ? "glass-strong border-primary/50 shadow-lg shadow-primary/5"
                       : "border-transparent hover:glass hover:border-border/50"

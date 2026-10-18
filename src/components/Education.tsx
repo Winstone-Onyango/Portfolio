@@ -3,6 +3,7 @@ import jkuatLogo from "@/assets/logos/jkuat.png";
 import andelaLogo from "@/assets/logos/andela.png";
 import plpLogo from "@/assets/logos/plp.png";
 import jhubLogo from "@/assets/logos/jhub.png";
+import gown from "@/assets/gown.jpg";
 
 const degrees = [
   {
@@ -67,7 +68,7 @@ const degrees = [
 
 export function Education() {
   return (
-    <section id="education" className="section-padding bg-background relative">
+    <section id="education" className="section-padding bg-background relative scroll-mt-20">
       <div className="absolute inset-0 bg-grid opacity-10" />
       <div className="section-container relative z-10">
         <ScrollReveal>
@@ -84,11 +85,11 @@ export function Education() {
 
         <div className="grid sm:grid-cols-2 gap-6">
           {degrees.map((deg) => (
-            <ScrollReveal key={deg.degree}>
-              <div className="glass rounded-sm p-6 h-full hover:border-primary/40 transition-all group">
+            <ScrollReveal key={deg.degree} className="min-w-0">
+              <div className="glass rounded-sm p-5 sm:p-6 h-full hover:border-primary/40 transition-all group">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <img src={deg.logo} alt="" className="h-6 w-6 object-contain shrink-0" />
-                  <span className="font-mono text-lg sm:text-xl font-bold text-primary leading-snug">
+                  <span className="font-mono text-base sm:text-xl font-bold text-primary leading-snug break-words min-w-0">
                     {deg.degree}
                   </span>
                   {deg.note && (
@@ -122,6 +123,26 @@ export function Education() {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Graduation photo — styled to rhyme with the hero portrait & project cards */}
+        <ScrollReveal>
+          <div className="flex justify-center mt-12">
+            <div className="relative">
+              <div className="w-64 sm:w-80 md:w-96 aspect-[3/4] overflow-hidden rounded-sm glass-strong">
+                <img
+                  src={gown}
+                  alt="Graduation photo"
+                  loading="lazy"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+              {/* Decorative elements — same as the hero portrait */}
+              <div className="absolute -bottom-3 -right-3 w-64 sm:w-80 md:w-96 aspect-[3/4] border border-primary/30 rounded-sm -z-10" />
+              <div className="absolute -top-3 -left-3 w-16 h-16 border-t-2 border-l-2 border-primary/50" />
+              <div className="absolute -bottom-3 -right-3 w-16 h-16 border-b-2 border-r-2 border-primary/50" />
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

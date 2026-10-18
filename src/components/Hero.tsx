@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, MessageCircle, Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
 import profile from "@/assets/profile.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
+import { WHATSAPP_URL } from "@/lib/contact";
 
 const ROLES = [
   "Telecommunication and Information Engineer",
@@ -13,8 +15,23 @@ const ROLES = [
   "Electrical & Embedded Systems",
 ];
 
-/** Slow oscillating counter: 0 -> target, holds at target, -> 0, looping (hero stats). */
-function CountingNumber({ target }: { target: number }) {
+/**
+ * Looping counter for the hero stats: counts 0 -> target, holds at the target,
+ * then jumps back to zero and repeats — it never counts back down. The count-up
+ * duration is identical for every counter, so all stats (e.g. Internships and
+ * Technologies) reach their maximum at exactly the same time on each loop.
+ */
+function CountingNumber({
+  target,
+  countUpMs = 2600,
+  holdMs = 3000,
+  resetMs = 900,
+}: {
+  target: number;
+  countUpMs?: number;
+  holdMs?: number;
+  resetMs?: number;
+}) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -22,35 +39,29 @@ function CountingNumber({ target }: { target: number }) {
       setValue(target);
       return;
     }
-    // Slow counter: counts up, rests at the top for a few seconds,
-    // counts back down, then restarts.
-    const stepMs = Math.max(90, Math.min(450, Math.round(2000 / Math.max(target, 1))));
-    const holdMs = 3200; // stay at the highest number before restarting
-    const restMs = 1200; // brief pause at zero
+    // Same total count-up time regardless of target keeps every counter in sync.
+    const stepMs = countUpMs / Math.max(target, 1);
     let current = 0;
-    let direction: 1 | -1 = 1;
     let timer = 0;
 
-    const run = () => {
-      const next = current + direction;
-      if (next > target) {
-        direction = -1; // reached the top — hold, then count back down
-        timer = window.setTimeout(run, holdMs);
-        return;
-      }
-      if (next < 0) {
-        direction = 1; // reached zero — pause, then count back up
-        timer = window.setTimeout(run, restMs);
-        return;
-      }
-      current = next;
+    const countUp = () => {
+      current += 1;
       setValue(current);
-      timer = window.setTimeout(run, stepMs);
+      if (current >= target) {
+        // Hold at the maximum, snap back to zero, pause, then loop again.
+        timer = window.setTimeout(() => {
+          setValue(0);
+          current = 0;
+          timer = window.setTimeout(countUp, resetMs);
+        }, holdMs);
+        return;
+      }
+      timer = window.setTimeout(countUp, stepMs);
     };
 
-    timer = window.setTimeout(run, stepMs);
+    timer = window.setTimeout(countUp, stepMs);
     return () => window.clearTimeout(timer);
-  }, [target]);
+  }, [target, countUpMs, holdMs, resetMs]);
 
   return <>{value}+</>;
 }
@@ -100,8 +111,8 @@ export function Hero() {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-grid opacity-30" />
 
-      <div className="section-container relative z-10 pt-24">
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
+      <div className="section-container relative z-10 pt-28 pb-20 sm:pt-24 sm:pb-0">
+        <div className="grid lg:grid-cols-5 gap-10 sm:gap-12 items-center">
           <div className="lg:col-span-3">
             <div className="inline-flex flex-wrap items-center gap-2 max-w-full px-3 py-1.5 glass rounded-sm mb-6">
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
@@ -174,6 +185,15 @@ export function Hero() {
                 <Linkedin className="h-4 w-4" />
               </a>
               <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-sm text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+              </a>
+              <a
                 href="mailto:winstoneonyango76@gmail.com"
                 aria-label="Email"
                 className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-sm text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
@@ -183,7 +203,7 @@ export function Hero() {
             </div>
 
             {/* Stats bar */}
-            <div className="flex flex-wrap gap-x-5 gap-y-4 sm:gap-x-8 sm:gap-y-6 mt-14 pt-8 border-t border-border/50">
+            <div className="flex flex-wrap gap-x-5 gap-y-4 sm:gap-x-8 sm:gap-y-6 mt-10 sm:mt-14 pt-8 border-t border-border/50">
               {[
                 { count: 4, label: "Internships" },
                 { count: 25, label: "Technologies" },
@@ -200,9 +220,9 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-2 flex justify-center lg:justify-end">
+          <div className="lg:col-span-2 flex justify-center lg:justify-end pb-4 lg:pb-0">
             <div className="relative">
-              <div className="w-60 h-72 sm:w-72 sm:h-80 md:w-80 md:h-[420px] overflow-hidden rounded-sm glass-strong">
+              <div className="w-56 h-64 sm:w-72 sm:h-80 md:w-80 md:h-[420px] overflow-hidden rounded-sm glass-strong">
                 <img
                   src={profile}
                   alt="Onyango Winstone — Telecommunication & Information Engineer"
@@ -210,7 +230,7 @@ export function Hero() {
                 />
               </div>
               {/* Decorative elements */}
-              <div className="absolute -bottom-3 -right-3 w-60 sm:w-72 md:w-80 h-72 sm:h-80 md:h-[420px] border border-primary/30 rounded-sm -z-10" />
+              <div className="absolute -bottom-3 -right-3 w-56 sm:w-72 md:w-80 h-64 sm:h-80 md:h-[420px] border border-primary/30 rounded-sm -z-10" />
               <div className="absolute -top-3 -left-3 w-16 h-16 border-t-2 border-l-2 border-primary/50" />
               <div className="absolute -bottom-3 -right-3 w-16 h-16 border-b-2 border-r-2 border-primary/50" />
             </div>

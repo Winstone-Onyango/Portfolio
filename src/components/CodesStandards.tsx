@@ -154,7 +154,7 @@ function CertCard({ cert }: { cert: Certificate }) {
 
 export function CodesStandards() {
   return (
-    <section id="codes" className="section-padding bg-muted/30 relative overflow-hidden">
+    <section id="codes" className="section-padding bg-muted/30 relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-grid opacity-10" />
       <div className="section-container relative z-10">
         <ScrollReveal>

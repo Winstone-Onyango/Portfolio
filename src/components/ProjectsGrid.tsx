@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -39,13 +39,36 @@ export function ProjectsGrid() {
 
   const selected = projects.find((p) => p.id === selectedId);
 
+  const gridRef = useRef<HTMLDivElement>(null);
+  const researchGridRef = useRef<HTMLDivElement>(null);
+  const prevPage = useRef(page);
+  const prevResearchPage = useRef(researchPage);
+
+  // When the page changes, bring the grid back into view so the newly
+  // paged-in projects are actually on screen — a shorter page would
+  // otherwise leave the viewport sitting on the next section.
+  useEffect(() => {
+    if (prevPage.current === page) return;
+    prevPage.current = page;
+    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [page]);
+
+  useEffect(() => {
+    if (prevResearchPage.current === researchPage) return;
+    prevResearchPage.current = researchPage;
+    researchGridRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [researchPage]);
+
   const handleFilterChange = (type: string) => {
     setFilter(type);
     setPage(0);
   };
 
   return (
-    <section id="projects" className="section-padding relative">
+    <section id="projects" className="section-padding relative scroll-mt-20">
       <div className="absolute inset-0 bg-grid opacity-10" />
       <div className="section-container relative z-10">
         <ScrollReveal>
@@ -79,13 +102,13 @@ export function ProjectsGrid() {
         </ScrollReveal>
 
         {/* Paginated project cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 md:min-h-[420px]">
+        <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 md:min-h-[420px] scroll-mt-24">
           {paged.map((project) => (
             <div
               key={project.id}
               className="glass rounded-sm overflow-hidden hover:border-primary/40 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.5)] transition-all group h-full flex flex-col animate-fade-in"
             >
-              <div className="h-52 relative overflow-hidden bg-muted">
+              <div className="h-44 sm:h-52 relative overflow-hidden bg-muted">
                 {projectAssets[project.id]?.featured ? (
                   <img
                     src={projectAssets[project.id].featured}
@@ -158,7 +181,7 @@ export function ProjectsGrid() {
 
         {/* Pagination controls */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-10 md:mb-16">
             <Button
               variant="outline"
               size="icon"
@@ -173,7 +196,7 @@ export function ProjectsGrid() {
                 <button
                   key={i}
                   onClick={() => setPage(i)}
-                  className={`w-8 h-8 rounded-sm text-sm font-mono transition-all ${
+                  className={`w-9 h-9 rounded-sm text-sm font-mono transition-all ${
                     i === page
                       ? "bg-primary text-primary-foreground"
                       : "glass text-muted-foreground hover:text-foreground hover:border-primary/50"
@@ -213,7 +236,7 @@ export function ProjectsGrid() {
           </h3>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:min-h-[420px]">
+        <div ref={researchGridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:min-h-[420px] scroll-mt-24">
           {researchPaged.map((project) => (
             <div key={project.id} className="animate-fade-in">
               <div className="glass rounded-sm overflow-hidden hover:border-primary/40 transition-all group">
@@ -268,7 +291,7 @@ export function ProjectsGrid() {
         )}
 
         {researchTotalPages > 1 && (
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-8">
             <Button
               variant="outline"
               size="icon"
@@ -283,7 +306,7 @@ export function ProjectsGrid() {
                 <button
                   key={i}
                   onClick={() => setResearchPage(i)}
-                  className={`w-8 h-8 rounded-sm text-sm font-mono transition-all ${
+                  className={`w-9 h-9 rounded-sm text-sm font-mono transition-all ${
                     i === researchPage
                       ? "bg-primary text-primary-foreground"
                       : "glass text-muted-foreground hover:text-foreground hover:border-primary/50"

@@ -2,7 +2,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 export function Services() {
   return (
-    <section id="about" className="section-padding bg-background relative">
+    <section id="about" className="section-padding bg-background relative scroll-mt-20">
       <div className="absolute inset-0 bg-grid opacity-10" />
       <div className="section-container relative z-10">
         <ScrollReveal>

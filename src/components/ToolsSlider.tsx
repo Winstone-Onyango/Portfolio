@@ -9,7 +9,7 @@ export function ToolsSlider() {
   const doubled = [...allTools, ...allTools];
 
   return (
-    <section id="tools" className="section-padding bg-background relative overflow-hidden">
+    <section id="tools" className="section-padding bg-background relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-grid opacity-20" />
 
       <div className="section-container mb-12 relative z-10">
