@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { Button } from "@/components/ui/button";
 
 export function Services() {
   return (
@@ -41,6 +44,16 @@ export function Services() {
             <span className="text-primary">AI/ML Model Development</span>, and{" "}
             <span className="text-primary">IoT-Embedded Systems</span>.
           </p>
+
+          {/* Continuation link — this preview leads to the one full About page */}
+          <div className="pt-2">
+            <Link to="/about" aria-label="Read more about me — open full about page">
+              <Button className="group bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm px-7 py-3 h-auto text-sm font-semibold tracking-wide">
+                More about me
+                <ArrowRight className="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -8,8 +8,23 @@ import { CodesStandards } from "@/components/CodesStandards";
 import { Education } from "@/components/Education";
 import { Footer } from "@/components/Footer";
 import siteBg from "@/assets/site-bg.jpg";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const Index = () => {
+  const location = useLocation();
+
+  // Support deep links like /#about after navigating back from /about
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        // small delay so layout is ready
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 80);
+      }
+    }
+  }, [location.hash]);
+
   return (
     <div className="min-h-screen bg-background relative">
       {/* Architectural background */}
