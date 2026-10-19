@@ -10,11 +10,13 @@ import certIntroLinux from "@/assets/certs/Introduction to Linux.jpeg";
 import certKcne from "@/assets/certs/Kubernetes and Cloud Native Essentials.jpeg";
 import certCisco from "@/assets/certs/Cisco Packet Tracer.jpeg";
 import gown from "@/assets/gown.jpg";
+import certAI from "@/assets/certs/SIC.jpg";
 
 import logoJhub from "@/assets/logos/jhub.png";
 import logoAndela from "@/assets/logos/andela.png";
 import logoJkuat from "@/assets/logos/jkuat.png";
 import logoPlp from "@/assets/logos/plp.png";
+import logoCisco from "@/assets/logos/Cisco.jpg";
 
 interface Certificate {
   year: string;
@@ -31,7 +33,7 @@ const certificates: Certificate[] = [
     year: "2026",
     issuer: "Samsung Innovation Campus & JHUB Africa",
     logo: logoJhub,
-    /*emoji: "\u{1F916}",*/
+    img: certAI,
     title: "Artificial Intelligence & Machine Learning",
     desc: "Intensive AI/ML training covering data preparation, supervised and unsupervised learning, model evaluation, and deploying practical Python-based models.",
   },
@@ -102,6 +104,7 @@ const certificates: Certificate[] = [
   {
     year: "2025",
     issuer: "Cisco Networking Academy",
+    logo: logoCisco,
     img: certCisco,
     title: "Cisco Packet Tracer",
     desc: "Network design and simulation: building and testing topologies, configuring routers and switches, and practising IP addressing virtually.",
