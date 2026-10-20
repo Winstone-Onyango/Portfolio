@@ -1,8 +1,8 @@
 // Real project screenshots (from Winstone's GitHub portfolio repo)
-import supportsafe from "@/assets/projects/screens/supportsafe.png";
-import winstoneAi from "@/assets/projects/screens/winstone-ai.png";
-import roboticCamera from "@/assets/projects/screens/robotic-camera.png";
-import camScanner from "@/assets/projects/screens/cam-scanner.png";
+import supportsafe from "@/assets/projects/screens/supportsafe.jpg";
+import winstoneAi from "@/assets/projects/screens/winstone-ai.jpg";
+import roboticCamera from "@/assets/projects/screens/robotic-camera.jpg";
+import camScanner from "@/assets/projects/screens/cam-scanner.jpg";
 
 export interface ProjectAssets {
   featured: string;

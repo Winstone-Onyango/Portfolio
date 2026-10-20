@@ -12,10 +12,10 @@ import certCisco from "@/assets/certs/Cisco Packet Tracer.jpeg";
 import gown from "@/assets/gown.jpg";
 import certAI from "@/assets/certs/SIC.jpg";
 
-import logoJhub from "@/assets/logos/jhub.png";
-import logoAndela from "@/assets/logos/andela.png";
-import logoJkuat from "@/assets/logos/jkuat.png";
-import logoPlp from "@/assets/logos/plp.png";
+import logoJhub from "@/assets/logos/jhub.jpg";
+import logoAndela from "@/assets/logos/andela.jpg";
+import logoJkuat from "@/assets/logos/jkuat.jpg";
+import logoPlp from "@/assets/logos/plp.jpg";
 import logoCisco from "@/assets/logos/Cisco.jpg";
 
 interface Certificate {

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ChevronRight, ChevronDown, MapPin, Briefcase } from "lucide-react";
-import kplcLogo from "@/assets/logos/kplc.png";
+import kplcLogo from "@/assets/logos/kplc.jpg";
 import shofcoLogo from "@/assets/logos/shofco.jpg";
-import kcbLogo from "@/assets/logos/kcb.png";
-import jkuatLogo from "@/assets/logos/jkuat.png";
+import kcbLogo from "@/assets/logos/kcb.jpg";
+import jkuatLogo from "@/assets/logos/jkuat.jpg";
 
 const areas = [
   {

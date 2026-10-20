@@ -1,8 +1,8 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
-import jkuatLogo from "@/assets/logos/jkuat.png";
-import andelaLogo from "@/assets/logos/andela.png";
-import plpLogo from "@/assets/logos/plp.png";
-import jhubLogo from "@/assets/logos/jhub.png";
+import jkuatLogo from "@/assets/logos/jkuat.jpg";
+import andelaLogo from "@/assets/logos/andela.jpg";
+import plpLogo from "@/assets/logos/plp.jpg";
+import jhubLogo from "@/assets/logos/jhub.jpg";
 import gown from "@/assets/gown.jpg";
 
 const degrees = [
