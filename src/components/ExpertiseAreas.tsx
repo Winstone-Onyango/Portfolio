@@ -11,7 +11,6 @@ const areas = [
     logo: kplcLogo,
     short: "KPLC",
     title: "Kenya Power & Lighting Company (KPLC)",
-    role: "Telecommunication Engineer Intern",
     type: "Internship",
     description:
       "Telecommunication Engineer Intern.",
@@ -25,7 +24,6 @@ const areas = [
     logo: shofcoLogo,
     short: "SHOFCO",
     title: "Shining Hope for Communities (SHOFCO)",
-    role: "IT & Tech Support Intern",
     type: "Internship",
     description:
       "IT & Tech Support Intern.",
@@ -39,7 +37,6 @@ const areas = [
     logo: kcbLogo,
     short: "KCB Bank",
     title: "KCB Bank Limited",
-    role: "Intern Engineer",
     type: "Internship",
     description:
       "Intern Engineer.",
@@ -52,7 +49,6 @@ const areas = [
     logo: jkuatLogo,
     short: "JKUAT ICT",
     title: "JKUAT ICT Department",
-    role: "ICT & Systems Engineer Attaché",
     type: "Attachment",
     description:
       "ICT & Systems Engineer Attaché.",
