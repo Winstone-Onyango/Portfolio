@@ -117,7 +117,7 @@ export function ContactForm() {
             Message sent!
           </h3>
           <p className="text-sm text-muted-foreground max-w-sm mx-auto">
-            Thanks{sentName ? `, ${sentName}` : ""} — your message is on its way
+            Thanks{sentName ? `, ${sentName}` : ""} for reaching out. Your message has been sent
             to my inbox. I&apos;ll get back to you soon.
           </p>
           <Button
