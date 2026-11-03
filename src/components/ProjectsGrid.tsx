@@ -24,7 +24,10 @@ export function ProjectsGrid() {
     (researchPage + 1) * ITEMS_PER_PAGE
   );
 
-  const types = ["all", ...new Set(professional.map((p) => p.type))];
+  const types = [
+    "all",
+    ...new Set([...professional.map((p) => p.type), "Networking"]),
+  ];
 
   const filtered =
     filter === "all"

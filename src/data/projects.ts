@@ -48,7 +48,7 @@ export const projects: Project[] = [
   {
     id: "winstone-ai",
     name: "Winstone.ai",
-    type: "AI Chat App",
+    type: "AI Platform",
     category: "professional",
     role: "AI / Full-Stack Developer",
     highlights: [
