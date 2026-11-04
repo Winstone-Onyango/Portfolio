@@ -11,12 +11,14 @@ import certKcne from "@/assets/certs/Kubernetes and Cloud Native Essentials.jpeg
 import certCisco from "@/assets/certs/Cisco Packet Tracer.jpeg";
 import gown from "@/assets/gown.jpg";
 import certAI from "@/assets/certs/SIC.jpg";
+import CertHuawei from "@/assets/certs/HCIA Datacom.jpeg";
 
 import logoJhub from "@/assets/logos/jhub.jpg";
 import logoAndela from "@/assets/logos/andela.jpg";
 import logoJkuat from "@/assets/logos/jkuat.jpg";
 import logoPlp from "@/assets/logos/plp.jpg";
 import logoCisco from "@/assets/logos/Cisco.jpg";
+import logoHuawei from "@/assets/logos/Huawei.jpg";
 
 interface Certificate {
   year: string;
@@ -100,6 +102,14 @@ const certificates: Certificate[] = [
     img: certKubernetes,
     title: "Kubernetes & Cloud Native Associate",
     desc: "Container orchestration fundamentals: pods, services, deployments and scaling, plus the cloud native stack and Linux tooling that supports it.",
+  },
+  {
+    year: "2025",
+    issuer: "Huawei",
+    logo: logoHuawei,
+    img: CertHuawei,
+    title: "HCIA Datacom",
+    desc: "Networking fundamentals: routing and switching, IP addressing, VLANs, and basic network troubleshooting and configuration.",
   },
   {
     year: "2025",
