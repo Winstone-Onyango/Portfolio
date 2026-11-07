@@ -11,7 +11,7 @@ import certKcne from "@/assets/certs/Kubernetes and Cloud Native Essentials.jpeg
 import certCisco from "@/assets/certs/Cisco Packet Tracer.jpeg";
 import gown from "@/assets/gown.jpg";
 import certAI from "@/assets/certs/SIC.jpg";
-import CertHuawei from "@/assets/certs/HCIA Datacom.jpeg";
+import CertHuawei from "@/assets/certs/HCIA Datacom.jpg";
 import certCCNA from "@/assets/certs/CCNA.jpg";
 
 import logoJhub from "@/assets/logos/jhub.jpg";
