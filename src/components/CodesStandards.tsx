@@ -12,6 +12,7 @@ import certCisco from "@/assets/certs/Cisco Packet Tracer.jpeg";
 import gown from "@/assets/gown.jpg";
 import certAI from "@/assets/certs/SIC.jpg";
 import CertHuawei from "@/assets/certs/HCIA Datacom.jpeg";
+import certCCNA from "@/assets/certs/CCNA.jpg";
 
 import logoJhub from "@/assets/logos/jhub.jpg";
 import logoAndela from "@/assets/logos/andela.jpg";
@@ -19,6 +20,7 @@ import logoJkuat from "@/assets/logos/jkuat.jpg";
 import logoPlp from "@/assets/logos/plp.jpg";
 import logoCisco from "@/assets/logos/Cisco.jpg";
 import logoHuawei from "@/assets/logos/Huawei.jpg";
+import logoCCNA from "@/assets/logos/Simplilearn.jpg";
 
 interface Certificate {
   year: string;
@@ -118,6 +120,14 @@ const certificates: Certificate[] = [
     img: certCisco,
     title: "Cisco Packet Tracer",
     desc: "Network design and simulation: building and testing topologies, configuring routers and switches, and practising IP addressing virtually.",
+  },
+  {
+    year: "2026",
+    issuer: "Simplilearn Academy",
+    logo: logoCCNA,
+    img: certCCNA,
+    title: "CCNA: Cisco Certified Network Associate",
+    desc: "Ethernet, IPv4 And IPv6 , Network Fundamentals, Addressing, IP Subnetting, IP services, Security Fundamentals, Switching, IP connectivity.",
   },
 ];
 
