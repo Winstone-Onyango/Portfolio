@@ -97,6 +97,32 @@ export const projects: Project[] = [
       outcomes: "Working real-time tracker \u2014 camera follows faces smoothly via motorized pan-and-tilt driven by on-device vision.",
     },
   },
+    {
+    id: "GameForge",
+    name: "GameForge Automator",
+    type: "Automation Tool",
+    category: "professional",
+    role: "Python Scripting and Automation",
+    highlights: [
+      "Automated game file discovery and organization",
+      "Dynamic game directory creation",
+      "JSON-based game metadata generation",
+      "Automated compilation and execution",
+    ],
+    tools: ["Python", "JSON", "File System Automation"],
+    links: {
+      code: "https://github.com/Winstone-Onyango/GameForge-Automator.git",
+    },
+    detail: {
+      overview: "A Python-based automation tool that simplifies game file management by automatically discovering, organizing, documenting, compiling, and executing multiple games from a source directory.",
+      scope: "File management + workflow automation — source directory scanning, game identification, directory creation, file copying and renaming, JSON metadata generation, and automated compilation and execution.",
+      safety: "Automates repetitive manual tasks",
+      codes: ["Python", "JSON Data Handling", "Workflow Automation"],
+      methods: "Developed using Python to automate file system operations, identify game files, organize them into a dedicated directory, and generate structured JSON metadata. The script then handles the compilation and execution workflow.",
+      outcomes: "An automated game management workflow that eliminates repetitive manual tasks, improves file organization, and simplifies the process of preparing and running multiple games.",
+    },
+  },
+
   {
     id: "cam-scanner",
     name: "Cam Scanner Mobile Application",
