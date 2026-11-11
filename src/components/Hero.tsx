@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, MessageCircle, Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
 import profile from "@/assets/profile.jpg";
-import heroBg from "@/assets/hero-bg.jpg";
 import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { WHATSAPP_URL } from "@/lib/contact";
 import { toolCategories } from "@/data/tools";
@@ -152,22 +151,6 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-      {/* Background image — kept visible: lighter scrims, stronger on the left where text sits */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover object-[70%_center] sm:object-center"
-        />
-        {/* Mobile: dark enough for text to stay readable, photo still peeks through */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/75 to-background/95 sm:hidden" />
-        {/* Desktop: readable on the left, photo breathes on the right */}
-        <div className="absolute inset-0 hidden sm:block bg-gradient-to-r from-background via-background/80 to-background/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30 pointer-events-none" />
-        {/* Extra readability veil on mobile only — keeps the photo visible but dims hot spots behind text */}
-        <div className="absolute inset-0 bg-background/45 backdrop-blur-[1px] sm:hidden pointer-events-none" />
-      </div>
-
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-grid opacity-15 sm:opacity-30" />
 
