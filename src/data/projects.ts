@@ -97,6 +97,32 @@ export const projects: Project[] = [
       outcomes: "Working real-time tracker \u2014 camera follows faces smoothly via motorized pan-and-tilt driven by on-device vision.",
     },
   },
+
+     {
+    id: "YTdownloader",
+    name: "YoutubeDownloader",
+    type: "Automation Tool",
+    category: "professional",
+    role: "Python Scripting and Automation",
+    highlights: [
+      "Comand-line based video downloading",
+      "Simplified video retrieval through URL processing",
+      "Automated video download management",
+    ],
+    tools: ["Python", "Comand-Line Scripting", "Youtube Downloading Libraries"],
+    links: {
+      code: "https://github.com/Winstone-Onyango/ytDownloader.git",
+    },
+    detail: {
+      overview: "A Python-based command-line tool that simplifies downloading YouTube videos directly from their URLs. The script automates the video retrieval process, allowing users to download videos through a simple terminal interface.",
+      scope: "Video downloading automation: YouTube URL processing, video retrieval, command-line interaction, and automated download handling.",
+      safety: "Designed for downloading content that users own or are authorised to download, while respecting copyright and platform terms.",
+      codes: ["Python", "Command-Line Scripting", "Workflow Automation"],
+      methods: "Developed using Python to automate the video downloading process. The script accepts a YouTube URL, processes the input, and initiates the download through a command-line interface.",
+      outcomes: "A lightweight command-line automation tool that simplifies YouTube video downloading, reduces manual effort, and provides a straightforward way to retrieve videos using their URLs.",
+    },
+  },
+
     {
     id: "GameForge",
     name: "GameForge Automator",
