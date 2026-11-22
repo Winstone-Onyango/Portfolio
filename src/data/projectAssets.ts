@@ -5,6 +5,7 @@ import roboticCamera from "@/assets/projects/screens/robotic-camera.jpg";
 import camScanner from "@/assets/projects/screens/cam-scanner.jpg";
 import GameForge from "@/assets/projects/screens/GameForge.jpg";
 import YTdownloader from "@/assets/projects/screens/YTdownloader.jpg";
+import BotanicalBeauty from "@/assets/projects/screens/Botanical.jpg";
 
 export interface ProjectAssets {
   featured: string;
@@ -17,5 +18,6 @@ export const projectAssets: Record<string, ProjectAssets> = {
   "robotic-camera": { featured: roboticCamera, gallery: [roboticCamera] },
   "cam-scanner": { featured: camScanner, gallery: [camScanner] },
   "GameForge": { featured: GameForge, gallery: [GameForge] },
+  "BotanicalBeauty": { featured: BotanicalBeauty, gallery: [BotanicalBeauty] },
   "YTdownloader": { featured: YTdownloader, gallery: [YTdownloader] },
 };

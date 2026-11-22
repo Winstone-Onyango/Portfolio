@@ -122,6 +122,33 @@ export const projects: Project[] = [
       outcomes: "A lightweight command-line automation tool that simplifies YouTube video downloading, reduces manual effort, and provides a straightforward way to retrieve videos using their URLs.",
     },
   },
+    {
+    id: "BotanicalBeauty",
+    name: "Botanical Beauty Catalogue",
+    type: "Web Development",
+    category: "professional",
+    role: "Full-Stack Web Development",
+    highlights: [
+      "Responsive multi-page beauty shop catalogue",
+      "Beauty service listing and gallery management",
+      "Customer enquiry with WhatsApp integration",
+      "Django Admin for managing website content",
+    ],
+    tools: ["React", "Vite", "Tailwind CSS", "Python", "Django REST Framework"],
+    links: {
+      live: "https://botanical-beauty.vercel.app/",
+      code: "https://github.com/Winstone-Onyango/Botanical-Beauty.git",
+    },
+    detail: {
+      overview: "A full-stack catalogue developed for a beauty business to showcase its products, beauty services and brand. The platform provides visitors with an easy way to explore the catalogue, view services and gallery content, and make enquiries",
+      scope: "Frontend development + backend API integration + content management, responsive page development, product cataloguing.",
+      safety: "Uses a structured backend to manage website content and handle customer enquiries",
+      codes: ["Python", "REST API Integration", "Database Management", "Responsive Web Design"],
+      methods: "Built the frontend using React, Vite, and Tailwind CSS, with a Django REST Framework backend. Implemented database models for products, categories, services, gallery items, and testimonials. Integrated an enquiry form and WhatsApp contact links, while Django Admin provides a central interface for managing website content.",
+      outcomes: "A responsive, multi-page beauty business catalogue that presents products and services professionally, makes business information accessible, and provides customers with simple ways to make enquiries.",
+    },
+  },
+
 
     {
     id: "GameForge",
