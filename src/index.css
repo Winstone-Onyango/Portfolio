@@ -90,14 +90,15 @@
 }
 
 .animate-marquee {
-  animation: marquee 25s linear infinite;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Reverse marquee for alternating scroll direction */
+/* Reverse marquee for alternating scroll direction — same speed as forward (30s) */
 @keyframes marquee-reverse {
   0% {
     transform: translateX(-50%);
@@ -108,7 +109,8 @@
 }
 
 .animate-marquee-reverse {
-  animation: marquee-reverse 25s linear infinite;
+  animation: marquee-reverse 30s linear infinite;
+  will-change: transform;
 }
 
 .animate-marquee-reverse:hover {
@@ -197,11 +199,13 @@
    Intentionally never pauses on hover/focus — it keeps scrolling non-stop. */
 .marquee-track {
   animation: marquee-right 30s linear infinite;
+  will-change: transform;
 }
 
 .marquee-mask {
   -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
   mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  overflow: hidden;
 }
 
 @keyframes marquee-right {

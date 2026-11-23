@@ -11,7 +11,7 @@ export interface ToolCategory {
 
 export const toolCategories: ToolCategory[] = [
   {
-    category: "Software Development",
+    category: "Software Development, AI/ML",
     tools: [
       { name: "Python", context: "Backend development, scripting & automation" },
       { name: "JavaScript / TypeScript", context: "Web development & interactive applications" },
@@ -19,6 +19,20 @@ export const toolCategories: ToolCategory[] = [
       { name: "Django / Django REST", context: "Backend development & RESTful APIs" },
       { name: "Flutter / Dart", context: "Cross-platform mobile application development" },
       { name: "C / C++", context: "Systems programming & embedded software" },
+      { name: "Deep Neural Networks", context: "Neural network development & model training" },
+      { name: "TensorFlow / scikit-learn", context: "Machine learning model development & evaluation" },
+      { name: "OpenCV / DNNs", context: "Computer vision, image processing & object detection" },
+      { name: "LLMs", context: "Large language models & conversational AI" },
+      { name: "RAG / NLP", context: "Information retrieval & natural language processing" },
+      { name: "NumPy / Pandas", context: "Data processing, manipulation & analysis" },
+      { name: "PostgreSQL / MySQL", context: "Relational database design & management" },
+      { name: "MongoDB", context: "NoSQL databases & application data storage" },
+      { name: "Database Management", context: "Data modelling, queries & optimisation" },
+      { name: "Docker", context: "Application containerisation & deployment" },
+      { name: "Kubernetes", context: "Container orchestration & application scaling" },
+      { name: "CI/CD", context: "Automated testing, integration & deployment" },
+      { name: "Git / GitHub", context: "Version control & collaborative development" },
+      { name: "Linux", context: "Command-line operations & system administration" },
     ],
   },
   {
@@ -34,18 +48,6 @@ export const toolCategories: ToolCategory[] = [
     ],
   },
   {
-    category: "AI & Machine Learning",
-    tools: [
-      { name: "Deep Neural Networks", context: "Neural network development & model training" },
-      { name: "TensorFlow / scikit-learn", context: "Machine learning model development & evaluation" },
-      { name: "OpenCV / DNNs", context: "Computer vision, image processing & object detection" },
-      { name: "LLMs", context: "Large language models & conversational AI" },
-      { name: "RAG / NLP", context: "Information retrieval & natural language processing" },
-      { name: "NumPy / Pandas", context: "Data processing, manipulation & analysis" },
-      { name: "AI Security & Governance", context: "Responsible AI & security considerations" },
-    ],
-  },
-  {
     category: "Embedded Systems & Robotics",
     tools: [
       { name: "Raspberry Pi", context: "Embedded computing & edge-based applications" },
@@ -55,19 +57,6 @@ export const toolCategories: ToolCategory[] = [
       { name: "MATLAB", context: "Engineering simulation & system modelling" },
       { name: "AutoCAD", context: "Engineering design & electronic circuit simulation" },
       { name: "Digital Signal Processing", context: "Signal analysis, processing & instrumentation" },
-    ],
-  },
-  {
-    category: "Data, Cloud & DevOps",
-    tools: [
-      { name: "PostgreSQL / MySQL", context: "Relational database design & management" },
-      { name: "MongoDB", context: "NoSQL databases & application data storage" },
-      { name: "Database Management", context: "Data modelling, queries & optimisation" },
-      { name: "Docker", context: "Application containerisation & deployment" },
-      { name: "Kubernetes", context: "Container orchestration & application scaling" },
-      { name: "CI/CD", context: "Automated testing, integration & deployment" },
-      { name: "Git / GitHub", context: "Version control & collaborative development" },
-      { name: "Linux", context: "Command-line operations & system administration" },
     ],
   },
 ];
