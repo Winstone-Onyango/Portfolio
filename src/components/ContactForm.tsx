@@ -6,7 +6,13 @@ import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CONTACT_EMAIL } from "@/lib/contact";
+import emailjs from "@emailjs/browser";
+import {
+  CONTACT_EMAIL,
+  EMAILJS_PUBLIC_KEY,
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID,
+} from "@/lib/contact";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name"),
@@ -66,26 +72,28 @@ export function ContactForm() {
     setSending(true);
     setSendError(null);
     try {
-      // FormSubmit delivers the message straight to my inbox — no mail app opens.
-      const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          _subject: values.subject,
+      // Send via EmailJS — no external form forwarder, direct from the browser
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: values.name,
+          from_email: values.email,
+          subject: values.subject,
           message: values.message,
-          _template: "table",
-          _captcha: "false",
-        }),
-      });
-      if (!res.ok) throw new Error(`Form submission failed (${res.status})`);
+          reply_to: values.email,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      if (response.status !== 200) {
+        throw new Error(`EmailJS failed with status ${response.status}`);
+      }
+
       setSentName(values.name.split(" ")[0]);
       setSent(true);
-    } catch {
+    } catch (err: unknown) {
+      console.error("EmailJS error:", err);
       setSendError(
         "Sorry, your message could not be sent right now. Please try again or email me directly.",
       );
