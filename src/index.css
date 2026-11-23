@@ -90,7 +90,7 @@
 }
 
 .animate-marquee {
-  animation: marquee 40s linear infinite;
+  animation: marquee 50s linear infinite;
 }
 
 .animate-marquee:hover {
@@ -178,7 +178,7 @@
 /* Endless auto-scrolling certificate marquee.
    Intentionally never pauses on hover/focus — it keeps scrolling non-stop. */
 .marquee-track {
-  animation: marquee-right 45s linear infinite;
+  animation: marquee-right 25s linear infinite;
 }
 
 .marquee-mask {

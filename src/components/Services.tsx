@@ -34,10 +34,6 @@ export function Services() {
             curiosity and the satisfaction of turning complex ideas into
             practical solutions.
           </p>
-          <p>
-            I may not know everything yet, but I&apos;m always willing to learn
-            what it takes to build something meaningful.
-          </p>
           <p className="text-foreground">
             Currently exploring{" "}
             <span className="text-primary">Network Automation</span>,{" "}
