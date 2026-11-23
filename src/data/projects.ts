@@ -175,31 +175,4 @@ export const projects: Project[] = [
       outcomes: "An automated game management workflow that eliminates repetitive manual tasks, improves file organization, and simplifies the process of preparing and running multiple games.",
     },
   },
-
-  {
-    id: "cam-scanner",
-    name: "Cam Scanner Mobile Application",
-    type: "Mobile App",
-    category: "professional",
-    role: "Flutter Developer",
-    highlights: [
-      "Mobile document-scanning application",
-      "Captures, crops, and enhances document images",
-      "Turns physical documents into clean, shareable digital files",
-      "Flutter + Dart with image processing",
-    ],
-    tools: ["Flutter", "Dart", "Image Processing"],
-    links: {
-      live: "https://camscanner.vercel.app",
-      code: "https://github.com/Winstone-Onyango/Cam_scanner_Mobile_Application.git",
-    },
-    detail: {
-      overview: "A mobile document-scanning app that captures, crops, and enhances images of physical documents into clean, shareable digital files.",
-      scope: "End-to-end mobile scanner — camera capture, automatic crop detection, perspective correction, enhancement filters, and clean export for sharing.",
-      safety: "On-device processing keeps sensitive documents private, with predictable image handling and bounded operations for smooth mobile performance.",
-      codes: ["Mobile UX", "On-device Processing", "Privacy by Design"],
-      methods: "Flutter + Dart with custom image-processing pipelines for cropping, enhancing, and exporting scanned documents.",
-      outcomes: "Working mobile scanner turning paper documents into clean, shareable digital files in a few taps.",
-    },
-  },
 ];

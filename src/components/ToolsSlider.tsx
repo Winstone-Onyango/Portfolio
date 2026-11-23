@@ -2,12 +2,6 @@ import { toolCategories } from "@/data/tools";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export function ToolsSlider() {
-  const allTools = toolCategories.flatMap((cat) =>
-    cat.tools.map((tool) => ({ ...tool, category: cat.category }))
-  );
-
-  const doubled = [...allTools, ...allTools];
-
   return (
     <section id="tools" className="section-padding bg-background relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-grid opacity-20" />
@@ -24,25 +18,38 @@ export function ToolsSlider() {
         </ScrollReveal>
       </div>
 
-      <div className="overflow-hidden relative z-10">
-        <div className="animate-marquee flex gap-4 w-max">
-          {doubled.map((tool, i) => (
-            <div
-              key={`${tool.name}-${i}`}
-              className="flex-shrink-0 glass rounded-sm px-5 py-4 w-60 hover:border-primary/40 transition-colors"
-            >
-              <p className="font-mono text-[10px] text-primary/70 uppercase tracking-wider mb-1">
-                {tool.category}
-              </p>
-              <p className="font-semibold text-foreground text-sm">
-                {tool.name}
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">
-                {tool.context}
-              </p>
-            </div>
-          ))}
-        </div>
+      <div className="section-container relative z-10 space-y-16">
+        {toolCategories.map((category, index) => {
+          const doubled = [...category.tools, ...category.tools];
+          const isReverse = index % 2 === 1;
+
+          return (
+            <ScrollReveal key={category.category}>
+              <div>
+                <h3 className="font-mono text-xs md:text-sm tracking-widest text-primary uppercase mb-4">
+                  {category.category}
+                </h3>
+                <div className="overflow-hidden relative">
+                  <div className={`flex gap-4 w-max ${isReverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
+                    {doubled.map((tool, i) => (
+                      <div
+                        key={`${tool.name}-${i}`}
+                        className="flex-shrink-0 glass rounded-sm px-5 py-4 w-60 hover:border-primary/40 transition-colors"
+                      >
+                        <p className="font-semibold text-foreground text-sm">
+                          {tool.name}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {tool.context}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          );
+        })}
       </div>
     </section>
   );
